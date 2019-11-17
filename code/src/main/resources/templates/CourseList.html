@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
+    <title>Course List</title>
+</head>
+
+<body class='list'>
+
+<div class="container">
+
+    <h3>Course List</h3>
+    <hr>
+
+    <a href="/CreateCustomer"><button>Add Customer</button></a>
+
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead bg-dark">
+        <tr>
+            <th class="text-white">Name         </th>
+            <th class="text-white">Email        </th>
+            <th class="text-white">Telephone    </th>
+            <th class="text-white">Edit    </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <!-- tempEmployee = Loop parameter-->
+        <!--                  : = Loops over list of employees-->
+        <!--                      employees comes from our Java code-->
+        <tr th:each="customer : ${customers}">
+            <td th:text="${customer.name}"            ></td>
+            <td th:text="${customer.email}"          ></td>
+            <td th:text="${customer.tel}"          ></td>
+            <td>
+                <form action="/UpdateCustomer" method='POST'>
+                    <input type="hidden" th:value="${customer.name}" name="name"/>
+                    <input type="submit" value="Update"/>
+                </form>
+
+                <form action="/DeleteCustomer" method='POST'>
+                    <input type="hidden" th:value="${customer.name}" name="name"/>
+                    <input type="submit" value="Delete" onclick="getConfirmation()" />
+                </form>
+
+            </td>
+
+
+            <script type = "text/javascript">
+
+                function getConfirmation() {
+                    var warning = confirm("By accepting, you will delete the Customer with its related API-key(s) and HTTP-Requst type(s)");
+
+                    if(warning == true) {
+
+                    }
+                    else {
+                        warning == false;
+                    }
+                }
+            </script>
+
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>
