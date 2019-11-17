@@ -1,6 +1,6 @@
 package dk.kea.university.controllers;
 
-package dk.kea.university.services.SeCourse;
+import dk.kea.university.services.SeCourse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
