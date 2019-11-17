@@ -26,6 +26,7 @@ public class Course {
     private String exam_form;
 
     public Course(int id, String name_da, String name_en, int semester, String class_code, String study_programme, String mandatory_or_elective, int ects, String course_language, int min_students, int max_students, int expected_students, String prerequisities, String learning_outcome, String content, String exam_form) {
+        this.id = id; 
         this.name_da = name_da;
         this.name_en = name_en;
         this.semester = semester;
