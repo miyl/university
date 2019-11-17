@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
+  // Front page before having logged in
   @GetMapping("/")
   public String index(){
     return "index";

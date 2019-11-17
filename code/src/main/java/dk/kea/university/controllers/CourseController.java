@@ -1,6 +1,9 @@
 package dk.kea.university.controllers;
 
+package dk.kea.university.services.SeCourse;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -19,7 +22,7 @@ public class CourseController {
   }
 
   @PostMapping("/add")
-  public String add(){
+  public String padd(){
     return "redirect:/add";
   }
 
