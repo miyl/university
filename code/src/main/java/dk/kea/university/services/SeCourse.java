@@ -24,7 +24,7 @@ public class SeCourse {
     }
 
     public List<Course> list() {
-      return reCourse.fetchAll();
+      return reCourse.findAll();
     }
 
     public Course findCourse(int id) {

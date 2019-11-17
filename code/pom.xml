@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>dk.kea</groupId>
 	<artifactId>university</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1</version>
 	<name>university</name>
-	<description>Demo project for Spring Boot</description>
+	<description>University course system</description>
 
 	<properties>
 		<java.version>12</java.version>
@@ -58,6 +58,11 @@
 			<exclusions>
 			</exclusions>
 		</dependency>
+
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
 
     <dependency> <!-- JUNIT -->
         <groupId>org.junit.jupiter</groupId>

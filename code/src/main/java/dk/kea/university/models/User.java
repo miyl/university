@@ -11,6 +11,7 @@ import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -49,10 +50,10 @@ public class User {
     @NotBlank
     private Timestamp createdAt;
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "usersFollowing")
     private Set<Course> coursesFollowing;
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "usersTeaching")
     private Set<Course> coursesTeaching;
 
     public User(int id, String first_name, String last_name, String password, String email, int authType, Timestamp createdAt) {
@@ -135,5 +136,10 @@ public class User {
 
     public void setCoursesTeaching(Set<Course> cf) {
         coursesTeaching = cf;
+    }
+
+    // Needed because they're sometimes stored in a Set
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

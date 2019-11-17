@@ -34,3 +34,6 @@ out
 *.classpath/
 *.settings/
 Control/.project
+
+# ignore h2 database
+code/data

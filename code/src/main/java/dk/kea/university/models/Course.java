@@ -1,13 +1,18 @@
 package dk.kea.university.models;
 
+import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 
 /**
  * Class that holds Course attributes.
@@ -80,6 +85,18 @@ public class Course {
     @Column(nullable = false)
     @NotBlank
     private String exam_form;
+
+    @ManyToMany
+    @JoinTable(name = "coursesFollowing",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private Set<User> usersFollowing;
+
+    @ManyToMany
+    @JoinTable(name = "coursesTeaching",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    private Set<User> usersTeaching;
 
     public Course(int id, String name_da, String name_en, int semester, String class_code, String study_programme, String mandatory_or_elective, int ects, String course_language, int min_students, int max_students, int expected_students, String prerequisities, String learning_outcome, String content, String exam_form) {
         this.id = id; 
@@ -224,5 +241,8 @@ public class Course {
         this.exam_form = exam_form;
     }
 
-
+    // Needed because they're sometimes stored in a Set
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

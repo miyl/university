@@ -23,7 +23,7 @@ public class SeUser {
     }
 
     public List<User> list() {
-      return reUser.fetchAll();
+      return reUser.findAll();
     }
 
     public User findUser(int id) {
