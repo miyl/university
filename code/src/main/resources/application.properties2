@@ -1,7 +1,0 @@
-spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-spring.datasource.url=jdbc:mysql://dbserver01.cwfsz5blza8v.eu-central-1.rds.amazonaws.com:3306/university
-spring.datasource.username=admin
-spring.datasource.password=password
-server.port=9090
-spring.jpa.hibernate.ddl-auto=update
-spring.main.allow-bean-definition-overriding=true
