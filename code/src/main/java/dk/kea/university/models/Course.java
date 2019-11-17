@@ -1,5 +1,10 @@
 package dk.kea.university.models;
 
+/**
+ * Class that holds Course attributes.
+ * @Author Tariq & Marcus
+ */
+
 public class Course {
 
 
