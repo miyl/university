@@ -1,20 +1,59 @@
 package dk.kea.university.models;
+
 import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import java.util.Set;
 
 /**
  * Class that stores user-attributes.
- * @Author Tariq & Marcus
+ * @Author Tariq and Marcus
  */
 
+@Entity
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false)
+    @NotBlank
     private String first_name;
+
+    @Column(nullable = false)
+    @NotBlank
     private String last_name;
+
+    @Column(nullable = false)
+    @NotBlank
     private String password;
+
+    @Column(nullable = false)
+    @NotBlank
     private String email;
+
+    @Column(nullable = false)
+    @NotBlank
     private int authType;
+
+    @Column(nullable = false)
+    @NotBlank
     private Timestamp createdAt;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Course> coursesFollowing;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Course> coursesTeaching;
 
     public User(int id, String first_name, String last_name, String password, String email, int authType, Timestamp createdAt) {
         this.id = id;
@@ -80,5 +119,21 @@ public class User {
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Set<Course> getCoursesFollowing() {
+        return coursesFollowing;
+    }
+
+    public void setCoursesFollowing(Set<Course> cf) {
+        coursesFollowing = cf;
+    }
+
+    public Set<Course> getCoursesTeaching() {
+        return coursesTeaching;
+    }
+
+    public void setCoursesTeaching(Set<Course> cf) {
+        coursesTeaching = cf;
     }
 }

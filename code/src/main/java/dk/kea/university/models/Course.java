@@ -1,28 +1,84 @@
 package dk.kea.university.models;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 /**
  * Class that holds Course attributes.
- * @Author Tariq & Marcus
+ * @Author Tariq and Marcus
  */
 
+@Entity
 public class Course {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(nullable = false)
+    @NotBlank
     private String name_da;
+
+    @Column(nullable = false)
+    @NotBlank
     private String name_en;
+
+    @Column(nullable = false)
+    @NotBlank
     private int semester;
+
+    @Column(nullable = false)
+    @NotBlank
     private String class_code;
+
+    @Column(nullable = false)
+    @NotBlank
     private String study_programme;
+
+    @Column(nullable = false)
+    @NotBlank
     private String mandatory_or_elective;
+
+    @Column(nullable = false)
+    @NotBlank
     private int ects;
+
+    @Column(nullable = false)
+    @NotBlank
     private String course_language;
+
+    @Column(nullable = false)
+    @NotBlank
     private int min_students;
+
+    @Column(nullable = false)
+    @NotBlank
     private int max_students;
+
+    @Column(nullable = false)
+    @NotBlank
     private int expected_students;
+
+    @Column(nullable = false)
+    @NotBlank
     private String prerequisities;
+
+    @Column(nullable = false)
+    @NotBlank
     private String learning_outcome;
+
+    @Column(nullable = false)
+    @NotBlank
     private String content;
+
+    @Column(nullable = false)
+    @NotBlank
     private String exam_form;
 
     public Course(int id, String name_da, String name_en, int semester, String class_code, String study_programme, String mandatory_or_elective, int ects, String course_language, int min_students, int max_students, int expected_students, String prerequisities, String learning_outcome, String content, String exam_form) {
