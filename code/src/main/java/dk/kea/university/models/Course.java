@@ -8,6 +8,7 @@ package dk.kea.university.models;
 public class Course {
 
 
+    private int id;
     private String name_da;
     private String name_en;
     private int semester;
@@ -24,7 +25,7 @@ public class Course {
     private String content;
     private String exam_form;
 
-    public Course(String name_da, String name_en, int semester, String class_code, String study_programme, String mandatory_or_elective, int ects, String course_language, int min_students, int max_students, int expected_students, String prerequisities, String learning_outcome, String content, String exam_form) {
+    public Course(int id, String name_da, String name_en, int semester, String class_code, String study_programme, String mandatory_or_elective, int ects, String course_language, int min_students, int max_students, int expected_students, String prerequisities, String learning_outcome, String content, String exam_form) {
         this.name_da = name_da;
         this.name_en = name_en;
         this.semester = semester;
@@ -41,6 +42,10 @@ public class Course {
         this.content = content;
         this.exam_form = exam_form;
     }
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public String getName_da() {
         return name_da;
@@ -161,4 +166,6 @@ public class Course {
     public void setExam_form(String exam_form) {
         this.exam_form = exam_form;
     }
+
+
 }
