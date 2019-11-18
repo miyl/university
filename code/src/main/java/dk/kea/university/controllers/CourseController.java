@@ -16,6 +16,7 @@ public class CourseController {
     return "courseList";
   }
 
+  // These roles must match the ones specified in SecurityConfig.java
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @GetMapping("/add")
   public String add(){
@@ -31,7 +32,7 @@ public class CourseController {
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @GetMapping("/update")
   public String update(){
-    return "courseAdd";
+    return "courseUpdate";
   }
 
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
