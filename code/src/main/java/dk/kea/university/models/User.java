@@ -1,7 +1,6 @@
 package dk.kea.university.models;
 
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
 import java.util.Objects;
 import java.util.Set;
 
@@ -42,9 +40,9 @@ public class User {
     @NotBlank
     private String email;
 
+    @NotNull
     @Column(nullable = false)
-    @NotBlank
-    private int authType;
+    private UserRole role;
 
     @Column(nullable = false)
     @NotBlank
@@ -56,13 +54,13 @@ public class User {
     @ManyToMany(mappedBy = "usersTeaching")
     private Set<Course> coursesTeaching;
 
-    public User(int id, String first_name, String last_name, String password, String email, int authType, Timestamp createdAt) {
+    public User(int id, String first_name, String last_name, String password, String email, UserRole role, Timestamp createdAt) {
         this.id = id;
         this.first_name = first_name;
         this.last_name = last_name;
         this.password = password;
         this.email = email;
-        this.authType = authType;
+        this.role = role;
         this.createdAt = createdAt;
     }
 
@@ -106,12 +104,12 @@ public class User {
         this.email = email;
     }
 
-    public int getAuthType() {
-        return authType;
+    public UserRole getUserRole() {
+        return role;
     }
 
-    public void setAuthType(int authType) {
-        this.authType = authType;
+    public void setUserRole(UserRole ur) {
+        role = ur;
     }
 
     public Timestamp getCreatedAt() {

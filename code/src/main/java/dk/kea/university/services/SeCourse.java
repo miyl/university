@@ -5,7 +5,8 @@ import dk.kea.university.repositories.ReCourse;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional; // Not used yet but may prove relevant
-import java.util.List;
+import java.lang.Iterable;
+//import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,7 +24,8 @@ public class SeCourse {
       return saved.getId();
     }
 
-    public List<Course> list() {
+    // CrudRepository findAll returns an Iterable rather than a List, unlike JpaRepository findAll which returns a List
+    public Iterable<Course> list() {
       return reCourse.findAll();
     }
 

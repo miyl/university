@@ -5,7 +5,8 @@ import dk.kea.university.repositories.ReUser;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional; // Not used yet but may prove relevant
-import java.util.List;
+import java.lang.Iterable; // why is this in Lang when List is in java.util?
+//import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,7 +23,8 @@ public class SeUser {
       return saved.getId();
     }
 
-    public List<User> list() {
+    // CrudRepository findAll returns an Iterable rather than a List, unlike JpaRepository findAll which returns a List
+    public Iterable<User> list() {
       return reUser.findAll();
     }
 

@@ -16,26 +16,31 @@ public class CourseController {
     return "courseList";
   }
 
+  //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @GetMapping("/add")
   public String add(){
     return "courseAdd";
   }
 
+  //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @PostMapping("/add")
   public String padd(){
     return "redirect:/add";
   }
 
+  //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @GetMapping("/update")
   public String update(){
     return "courseAdd";
   }
 
+  //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @PostMapping("/update")
   public String pupdate(){
     return "redirect:/";
   }
 
+  //@Secured({"ROLE_ADMIN"})
   @PostMapping("/delete")
   public String delete(){
     return "redirect:/";

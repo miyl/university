@@ -16,11 +16,13 @@ public class UserController {
     return "userList";
   }
 
+  //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @GetMapping("/add")
   public String add(){
     return "userAdd";
   }
 
+  //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @PostMapping("/add")
   public String padd(){
     return "redirect:/add";
@@ -28,7 +30,7 @@ public class UserController {
 
   @GetMapping("/update")
   public String update(){
-    return "courseAdd";
+    return "userUpdate";
   }
 
   @PostMapping("/update")
