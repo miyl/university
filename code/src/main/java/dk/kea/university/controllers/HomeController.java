@@ -7,21 +7,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class HomeController {
 
+  // As long as we keep these files in templates/home this seems sensible?
+  String pathPrefix = "home/";
+
   // Front page before having logged in
   @GetMapping("/")
   public String index(){
-    return "index";
+    return pathPrefix + "index";
   }
 
   // Front page after having logged in
   @GetMapping("/overview")
   public String overview(){
-    return "overview";
+    return pathPrefix + "overview";
   }
 
   @GetMapping("/login")
   public String login(){
-    return "login";
+    return pathPrefix + "login";
   }
 
   @PostMapping("/login")
@@ -31,7 +34,7 @@ public class HomeController {
 
   @GetMapping("/register")
   public String register(){
-    return "register";
+    return pathPrefix + "register";
   }
 
   @PostMapping("/register")
