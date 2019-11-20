@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
+    <!--/*/ <th:block th:include="fragments/header.html"> </th:block> /*/-->
     <title>Title</title>
 </head>
+
 <body>
+
+  <!-- Fragment af top-navigation.-->
+  <div th:insert="fragments/topnav">Menu</div>
 
 </body>
 </html>

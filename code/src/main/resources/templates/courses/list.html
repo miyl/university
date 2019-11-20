@@ -1,91 +1,94 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <!--/*/ <th:block th:include="fragments/head.html"> </th:block> /*/-->
+    <!--/*/ <th:block th:include="fragments/header.html"> </th:block> /*/-->
     <title>Course List</title>
 </head>
 
 <body class='list'>
 
-<div class="container">
+  <!-- Fragment af top-navigation.-->
+  <div th:insert="fragments/topnav">Menu</div>
 
-    <h3>Course List</h3>
-    <hr>
+  <div class="container">
 
-    <a href="/addCourse"><button>Add Course</button></a>
+      <h3>Course List</h3>
+      <hr>
 
-
-    <table class="table table-bordered table-striped">
-        <thead class="thead bg-dark">
-        <tr>
-            <th class="text-white">ID                    </th>
-            <th class="text-white">Name (Danish)         </th>
-            <th class="text-white">Name (English)        </th>
-            <th class="text-white">Semester              </th>
-            <th class="text-white">Class Code            </th>
-            <th class="text-white">Study Programme       </th>
-            <th class="text-white">Mandatory or Elective </th>
-            <th class="text-white">ECTS                  </th>
-            <th class="text-white">Course Language       </th>
-            <th class="text-white">Minimum # of Students </th>
-            <th class="text-white">Maxiumum # of Students</th>
-            <th class="text-white">Expected # of Students</th>
-            <th class="text-white">Prerequisites         </th>
-            <th class="text-white">Learning Outcome      </th>
-            <th class="text-white">Content               </th>
-            <th class="text-white">Learning Activities   </th>
-            <th class="text-white">Exam Form             </th>
-            <th class="text-white">Teachers              </th>
+      <a href="/addCourse"><button>Add Course</button></a>
 
 
-        </tr>
-        </thead>
-
-        <tbody>
-        <!-- tempEmployee = Loop parameter-->
-        <!--                  : = Loops over list of Courses-->
-        <!--                      Courses comes from Java code-->
-        <!--
-        <tr th:each="course : ${courses}">
-            <td th:text="${course.name}"            ></td>
-            <td th:text="${course.email}"          ></td>
-            <td th:text="${course.tel}"          ></td>
-            <td>
-                <form action="/UpdateCourse" method='POST'>
-                    <input type="hidden" th:value="${course.name}" name="name"/>
-                    <input type="submit" value="Update"/>
-                </form>
-
-                <form action="/DeleteCourse" method='POST'>
-                    <input type="hidden" th:value="${course.name}" name="name"/>
-                    <input type="submit" value="Delete" onclick="getConfirmation()" />
-                </form>
-
-            </td>
-            -->
+      <table class="table table-bordered table-striped">
+          <thead class="thead bg-dark">
+              <tr>
+                  <th class="text-white">ID                    </th>
+                  <th class="text-white">Name (Danish)         </th>
+                  <th class="text-white">Name (English)        </th>
+                  <th class="text-white">Semester              </th>
+                  <th class="text-white">Class Code            </th>
+                  <th class="text-white">Study Programme       </th>
+                  <th class="text-white">Mandatory or Elective </th>
+                  <th class="text-white">ECTS                  </th>
+                  <th class="text-white">Course Language       </th>
+                  <th class="text-white">Minimum # of Students </th>
+                  <th class="text-white">Maxiumum # of Students</th>
+                  <th class="text-white">Expected # of Students</th>
+                  <th class="text-white">Prerequisites         </th>
+                  <th class="text-white">Learning Outcome      </th>
+                  <th class="text-white">Content               </th>
+                  <th class="text-white">Learning Activities   </th>
+                  <th class="text-white">Exam Form             </th>
+                  <th class="text-white">Teachers              </th>
 
 
-            <script type = "text/javascript">
+              </tr>
+          </thead>
 
-                function getConfirmation() {
-                    var warning = confirm("By accepting, you will delete the Course with its related API-key(s) and HTTP-Requst type(s)");
+          <tbody>
+          <!-- tempEmployee = Loop parameter-->
+          <!--                  : = Loops over list of Courses-->
+          <!--                      Courses comes from Java code-->
+          <!--
+          <tr th:each="course : ${courses}">
+              <td th:text="${course.name}"            ></td>
+              <td th:text="${course.email}"          ></td>
+              <td th:text="${course.tel}"          ></td>
+              <td>
+                  <form action="/UpdateCourse" method='POST'>
+                      <input type="hidden" th:value="${course.name}" name="name"/>
+                      <input type="submit" value="Update"/>
+                  </form>
 
-                    if(warning == true) {
+                  <form action="/DeleteCourse" method='POST'>
+                      <input type="hidden" th:value="${course.name}" name="name"/>
+                      <input type="submit" value="Delete" onclick="getConfirmation()" />
+                  </form>
 
-                    }
-                    else {
-                        warning == false;
-                    }
-                }
-            </script>
-
+              </td>
+              -->
 
 
-        </tr>
-        </tbody>
-    </table>
-</div>
+              <script type = "text/javascript">
+
+                  function getConfirmation() {
+                      var warning = confirm("By accepting, you will delete the Course with its related API-key(s) and HTTP-Requst type(s)");
+
+                      if(warning == true) {
+
+                      }
+                      else {
+                          //warning == false;
+                      }
+                  }
+              </script>
+
+
+
+              <!--</tr> -->
+          </tbody>
+      </table>
+  </div>
 
 
 </body>

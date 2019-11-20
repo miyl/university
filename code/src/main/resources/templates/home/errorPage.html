@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-    <title>Error Page</title>
+<head>
+    <!--/*/ <th:block th:include="fragments/header.html"> </th:block> /*/-->
+    <title>Title</title>
 </head>
+
 <body>
 
-Error - Something went wrong
+  <!-- Fragment af top-navigation.-->
+  <div th:insert="fragments/topnav">Menu</div>
+
+  Error - Something went wrong
 
 </body>
 </html>
