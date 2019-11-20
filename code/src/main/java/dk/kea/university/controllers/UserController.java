@@ -17,6 +17,12 @@ import org.springframework.security.access.annotation.Secured;
 @RequestMapping("users")
 public class UserController {
 
+  private final SeUser seUser;
+
+  public UserController(SeUser seUser) {
+    this.seUser = seUser;
+  }
+
   String pathPrefix="users/";
 
   //@GetMapping("/")
@@ -25,10 +31,10 @@ public class UserController {
   //}
 
   @Secured({"ROLE_ADMIN"})
-  @GetMapping("/usersInCourse")
+  @GetMapping("/inCourse")
   public String usersInCourse(@PathVariable("courseId") int courseId) {
     //Iterable<User> usersInCourse = seUser.getUsersInCourse();
-    return pathPrefix + "usersInCourse";
+    return pathPrefix + "inCourse";
   }
 
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})

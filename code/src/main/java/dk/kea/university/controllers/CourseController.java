@@ -14,32 +14,38 @@ import org.springframework.security.access.annotation.Secured;
 @RequestMapping("courses")
 public class CourseController {
 
+  private final SeCourse seCourse;
+
+  public CourseController(SeCourse seCourse) {
+    this.seCourse = seCourse;
+  }
+
   String pathPrefix="courses/";
 
   // CRUD
 
   @GetMapping("/list")
   public String list(){
-    return pathPrefix + "listCourses";
+    return pathPrefix + "list";
   }
 
   // These roles must match the ones specified in SecurityConfig.java
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @GetMapping("/add")
   public String add(){
-    return pathPrefix + "addCourse";
+    return pathPrefix + "add";
   }
 
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @PostMapping("/add")
   public String padd(){
-    return "redirect:/addCourse";
+    return "redirect:/add";
   }
 
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @GetMapping("/update")
   public String update(){
-    return pathPrefix + "updateCourse";
+    return pathPrefix + "update";
   }
 
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
