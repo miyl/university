@@ -14,20 +14,20 @@ import org.springframework.security.access.annotation.Secured;
 @RequestMapping("courses")
 public class CourseController {
 
-
+  String pathPrefix="courses/";
 
   // CRUD
 
-  @GetMapping("/")
+  @GetMapping("/list")
   public String list(){
-    return "listCourses";
+    return pathPrefix + "listCourses";
   }
 
   // These roles must match the ones specified in SecurityConfig.java
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @GetMapping("/add")
   public String add(){
-    return "addCourse";
+    return pathPrefix + "addCourse";
   }
 
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
@@ -39,7 +39,7 @@ public class CourseController {
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   @GetMapping("/update")
   public String update(){
-    return "updateCourse";
+    return pathPrefix + "updateCourse";
   }
 
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})

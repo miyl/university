@@ -17,17 +17,19 @@ import org.springframework.security.access.annotation.Secured;
 @RequestMapping("users")
 public class UserController {
 
-//@GetMapping("/")
-//public String list(){
-//  return "userList";
-//}
+  String pathPrefix="users/";
 
-@Secured({"ROLE_ADMIN"})
-@GetMapping("/usersInCourse")
-public String usersInCourse(@PathVariable("courseId") int courseId) {
-  //Iterable<User> usersInCourse = seUser.getUsersInCourse();
-  return "usersInCourse";
-}
+  //@GetMapping("/")
+  //public String list(){
+  //  return "userList";
+  //}
+
+  @Secured({"ROLE_ADMIN"})
+  @GetMapping("/usersInCourse")
+  public String usersInCourse(@PathVariable("courseId") int courseId) {
+    //Iterable<User> usersInCourse = seUser.getUsersInCourse();
+    return pathPrefix + "usersInCourse";
+  }
 
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
   // @GetMapping("/add")
