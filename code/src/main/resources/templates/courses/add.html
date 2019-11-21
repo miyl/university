@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!--/*/ <th:block th:include="fragments/header.html"> </th:block> /*/-->
+    <title>Add Course</title>
+</head>
+
+<body>
+
+  <!-- Fragment af top-navigation.-->
+  <div th:insert="fragments/topnav">Menu</div>
+
+  <h3>Add Course</h3>
+  <hr>
+
+  <form action="/courses/add" method="post">
+
+      <!-- ID should be auto incremented -->
+      <input placeholder="name_da" name="name_da">
+      <input placeholder="name_en" name="name_en">
+      <select name="semester">
+          <option value="1">1st Semester of the year</option>
+          <option value="2">2nd Semester of the year</option>
+      </select>
+      <input placeholder="class_code" name="class_code">
+      <input placeholder="study_programme" name="study_programme">
+      <input placeholder="mandatory_or_elective" name="mandatory_or_elective">
+      <input type="number" placeholder="ects" name="ects">
+      <input placeholder="course_language" name="course_language">
+      <input type="number" placeholder="min_students" name="min_students">
+      <input type="number" placeholder="max_students" name="max_students">
+      <input type="number" placeholder="expected_students" name="expected_students">
+      <input placeholder="prerequisites" name="prerequisites">
+      <input placeholder="learning_outcome" name="learning_outcome">
+      <input placeholder="content" name="content">
+      <input placeholder="exam_form" name="exam_form">
+
+      <input class="btn btn-primary" type="submit" value="Add">
+
+  </form>
+
+</body>
+</html>

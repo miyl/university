@@ -21,11 +21,13 @@ public class HomeController {
     return "redirect:/";
   }
 
+  String prefixPath ="/home/";
+
   // TODO: I guess we need a separate Model for these? And a template.
   @Secured({"ROLE_ADMIN"})
   @GetMapping("/student-signup-requests")
   public String studentSignupRequests() {
-    return "student-signup-requests";
+    return prefixPath + "student-signup-requests";
   }
 
   @Secured({"ROLE_ADMIN"})
