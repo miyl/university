@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.ui.Model;
 import java.lang.Iterable;
 
 // Security
@@ -18,12 +19,11 @@ import org.springframework.security.access.annotation.Secured;
 public class UserController {
 
   private final SeUser seUser;
+  String pathPrefix="users/";
 
   public UserController(SeUser seUser) {
     this.seUser = seUser;
   }
-
-  String pathPrefix="users/";
 
   //@GetMapping("/")
   //public String list(){

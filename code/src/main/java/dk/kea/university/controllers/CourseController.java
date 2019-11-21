@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.ui.Model;
 
 // Security
 import org.springframework.security.access.annotation.Secured;
@@ -25,7 +26,8 @@ public class CourseController {
   // CRUD
 
   @GetMapping("/list")
-  public String list(){
+  public String list(Model m){
+    m.addAttribute("courses", seCourse.list());
     return pathPrefix + "list";
   }
 

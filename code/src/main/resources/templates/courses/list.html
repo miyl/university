@@ -11,12 +11,12 @@
   <!-- Fragment af top-navigation.-->
   <div th:insert="fragments/topnav">Menu</div>
 
-  <div class="container">
+  <div class="container-fluid">
 
       <h3>Course List</h3>
       <hr>
 
-      <a href="/addCourse"><button>Add Course</button></a>
+      <a href="/courses/add"><button>Add Course</button></a>
 
 
       <table class="table table-bordered table-striped">
@@ -40,7 +40,15 @@
                   <th class="text-white">Learning Activities   </th>
                   <th class="text-white">Exam Form             </th>
                   <th class="text-white">Teachers              </th>
-
+                  <!-- marcus: I realize this is very messy so maybe we need to relocate this or other data elsewhere: -->
+                  <!-- Teacher only, only the courses she/he teaches -->
+                  <th class="text-white">Edit course</th>
+                  <!-- Administration worker only. Approve student signup is its own page (in the menu) rather than here. -->
+                  <th class="text-white">Students/Teachers in course</th>
+                  <!-- Student/Teacher only -->
+                  <th class="text-white">Sign up in course       </th>
+                  <!-- Part of CRUD, but who can do this? -->
+                  <th class="text-white">Delete course       </th>
 
               </tr>
           </thead>
@@ -49,11 +57,23 @@
           <!-- tempEmployee = Loop parameter-->
           <!--                  : = Loops over list of Courses-->
           <!--                      Courses comes from Java code-->
-          <!--
           <tr th:each="course : ${courses}">
-              <td th:text="${course.name}"            ></td>
-              <td th:text="${course.email}"          ></td>
-              <td th:text="${course.tel}"          ></td>
+              <td th:text="${course.id}"            ></td>
+              <td th:text="${course.name_da}"          ></td>
+              <td th:text="${course.name_en}"          ></td>
+              <td th:text="${course.semester}"          ></td>
+              <td th:text="${course.class_code}"          ></td>
+              <td th:text="${course.study_programme}"          ></td>
+              <td th:text="${course.mandatory_or_elective}"          ></td>
+              <td th:text="${course.ects}"          ></td>
+              <td th:text="${course.course_language}"          ></td>
+              <td th:text="${course.min_students}"          ></td>
+              <td th:text="${course.max_students}"          ></td>
+              <td th:text="${course.expected_students}"          ></td>
+              <td th:text="${course.prerequisites}"          ></td>
+              <td th:text="${course.learning_outcome}"          ></td>
+              <td th:text="${course.content}"          ></td>
+              <td th:text="${course.exam_form}"          ></td>
               <td>
                   <form action="/UpdateCourse" method='POST'>
                       <input type="hidden" th:value="${course.name}" name="name"/>
@@ -66,7 +86,6 @@
                   </form>
 
               </td>
-              -->
 
 
               <script type = "text/javascript">
@@ -82,7 +101,6 @@
                       }
                   }
               </script>
-
 
 
               <!--</tr> -->
