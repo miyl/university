@@ -21,13 +21,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
       auth.inMemoryAuthentication()
-        .withUser("max").password(passwordEncoder().encode("pass")).roles("STUDENT")
+        .withUser("max").password(passwordEncoder().encode("p")).roles("STUDENT")
         .and()
-        .withUser("eve").password(passwordEncoder().encode("pass")).roles("TEACHER")
+        .withUser("eve").password(passwordEncoder().encode("p")).roles("TEACHER")
         .and()
-        .withUser("sskraek").password(passwordEncoder().encode("pass")).roles("TEACHER")
+        .withUser("sskraek").password(passwordEncoder().encode("p")).roles("TEACHER")
         .and()
-        .withUser("hacker").password(passwordEncoder().encode("pass")).roles("ADMIN");
+        .withUser("hacker").password(passwordEncoder().encode("p")).roles("ADMIN");
     }
 
     @Bean
