@@ -16,11 +16,6 @@ public class HomeController {
     return "redirect:/courses/list";
   }
 
-  @PostMapping("/logout")
-  public String logout() {
-    return "redirect:/";
-  }
-
   String prefixPath ="/home/";
 
   // TODO: I guess we need a separate Model for these? And a template.

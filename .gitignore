@@ -24,7 +24,7 @@ buildNumber.properties
 *.vbak
 
 # project specific
-**/application.properties
+#**/application.properties
 
 # For class files
 out

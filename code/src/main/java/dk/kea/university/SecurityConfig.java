@@ -35,13 +35,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   // Spring Security blocks access to the console so therefore we have this section
   // https://springframework.guru/using-the-h2-database-console-in-spring-boot-with-spring-security/
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http.authorizeRequests().antMatchers("/").permitAll().and()
-      .authorizeRequests().antMatchers("/console/**").permitAll();
-    http.csrf().disable();
-    http.headers().frameOptions().disable();
-  }
+  // FIXME: This code, if not commented out, blocks the logout page for some reason?
+  // @Override
+  // protected void configure(HttpSecurity http) throws Exception {
+  //   http.authorizeRequests().antMatchers("/").permitAll().and()
+  //     .authorizeRequests().antMatchers("/console/**").permitAll();
+  //   http.csrf().disable();
+  //   http.headers().frameOptions().disable();
+  // }
 
   @Bean
   public PasswordEncoder passwordEncoder() {
