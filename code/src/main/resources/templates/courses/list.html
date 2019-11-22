@@ -10,9 +10,7 @@
 <body class='list'>
 
 <!-- Fragment af top-navigation.-->
-<!--
 <div th:insert="fragments/topnav">Menu</div>
--->
 
 <div class="container-fluid">
 
@@ -39,8 +37,6 @@
             <td th:text="${course.id}"               ></td>
             <td th:text="${course.name_da}"          ></td>
             <td th:text="${course.name_en}"          ></td>
-            <td th:text="${course.semester}"         ></td>
-            <td th:text="${course.class_code}"       ></td>
 
             <td>
                 <form action="/courses/update" method='POST'>
@@ -54,7 +50,7 @@
                 </form>
 
                 <form action="../unused/infoOld.html">
-                    <button type="submit">vis mere</button>
+                    <button type="submit">Course Details</button>
                 </form>
 
             </td>

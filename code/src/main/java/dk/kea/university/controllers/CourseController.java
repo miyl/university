@@ -1,11 +1,11 @@
 package dk.kea.university.controllers;
 
+import dk.kea.university.models.Course;
+import dk.kea.university.repositories.ReCourse;
 import dk.kea.university.services.SeCourse;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
 // Security
@@ -52,14 +52,19 @@ public class CourseController {
 
   // Should probably take a specific course as input? You get here by clicking edit on a specific on a course in the list you're responsible for as a teacher (there can be multiple)
   @Secured({"ROLE_TEACHER"})
-  @GetMapping("/update")
-  public String update(){
+  @GetMapping("/update/{id}")
+  public String update(@RequestParam("id") int id, Model model){
+    model.addAttribute("course", seCourse.findCourse(id));
+
     return pathPrefix + "update";
+
   }
 
   @Secured({"ROLE_TEACHER"})
   @PostMapping("/update")
-  public String pupdate(){
+  public String pupdate(@ModelAttribute Course course){
+   seCourse.update(course);
+
     return "redirect:/";
   }
 
@@ -77,3 +82,4 @@ public class CourseController {
   }
 
 }
+

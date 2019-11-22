@@ -43,6 +43,15 @@ public class SeCourse {
       }
     }
 
-    // TODO: Update and Delete
+    //update method
+    public  void update(Course course) {
+        reCourse.save(course);
+    }
+
+
+    public void delete(int id) {
+        //Sletter eksisterende produkt
+        reCourse.deleteById(id);
+    }
   
 }
