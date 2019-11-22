@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
@@ -16,6 +15,7 @@ import javax.persistence.JoinTable;
 
 /**
  * Class that holds Course attributes.
+ *
  * @Author Tariq and Marcus
  */
 @Entity
@@ -71,7 +71,7 @@ public class Course {
 
     @Column(nullable = false)
     @NotBlank
-    private String prerequisities;
+    private String prerequisites;
 
     @Column(nullable = false)
     @NotBlank
@@ -86,42 +86,22 @@ public class Course {
     private String exam_form;
 
     @ManyToMany
-    @JoinTable(name = "coursesFollowing",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_id"))
+    @JoinTable(name = "courses_students",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id"))
     private Set<User> usersFollowing;
 
-    @ManyToMany
-    @JoinTable(name = "coursesTeaching",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "course_id"))
-    private Set<User> usersTeaching;
-
     // Required by Spring
-    public Course() {}
-
-    public Course(int id, String name_da, String name_en, int semester, String class_code, String study_programme, String mandatory_or_elective, int ects, String course_language, int min_students, int max_students, int expected_students, String prerequisities, String learning_outcome, String content, String exam_form) {
-        this.id = id;
-        this.name_da = name_da;
-        this.name_en = name_en;
-        this.semester = semester;
-        this.class_code = class_code;
-        this.study_programme = study_programme;
-        this.mandatory_or_elective = mandatory_or_elective;
-        this.ects = ects;
-        this.course_language = course_language;
-        this.min_students = min_students;
-        this.max_students = max_students;
-        this.expected_students = expected_students;
-        this.prerequisities = prerequisities;
-        this.learning_outcome = learning_outcome;
-        this.content = content;
-        this.exam_form = exam_form;
+    public Course() {
     }
 
-    public int getId() { return id; }
+    public int getId() {
+        return id;
+    }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName_da() {
         return name_da;
@@ -211,12 +191,12 @@ public class Course {
         this.expected_students = expected_students;
     }
 
-    public String getPrerequisities() {
-        return prerequisities;
+    public String getPrerequisites() {
+        return prerequisites;
     }
 
-    public void setPrerequisities(String prerequisities) {
-        this.prerequisities = prerequisities;
+    public void setPrerequisites(String prerequisites) {
+        this.prerequisites = prerequisites;
     }
 
     public String getLearning_outcome() {

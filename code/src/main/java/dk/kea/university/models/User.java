@@ -14,6 +14,7 @@ import java.util.Set;
 
 /**
  * Class that stores user-attributes.
+ *
  * @Author Tariq and Marcus
  */
 
@@ -51,21 +52,9 @@ public class User {
     @ManyToMany(mappedBy = "usersFollowing")
     private Set<Course> coursesFollowing;
 
-    @ManyToMany(mappedBy = "usersTeaching")
-    private Set<Course> coursesTeaching;
-
-    public User(int id, String first_name, String last_name, String password, String email, UserRole role, Timestamp createdAt) {
-        this.id = id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.password = password;
-        this.email = email;
-        this.role = role;
-        this.createdAt = createdAt;
-    }
-
     // Required by Spring
-    public User() {}
+    public User() {
+    }
 
     public int getId() {
         return id;
@@ -129,14 +118,6 @@ public class User {
 
     public void setCoursesFollowing(Set<Course> cf) {
         coursesFollowing = cf;
-    }
-
-    public Set<Course> getCoursesTeaching() {
-        return coursesTeaching;
-    }
-
-    public void setCoursesTeaching(Set<Course> cf) {
-        coursesTeaching = cf;
     }
 
     // Needed because they're sometimes stored in a Set
