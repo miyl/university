@@ -29,6 +29,11 @@ public class SeCourse {
       return reCourse.findAll();
     }
 
+    //Purpose of this is to display the course name & id (acts as preview to List". Ok to use this method?
+    public Iterable<Course> info() {
+        return reCourse.findAll();
+    }
+
     public Course findCourse(int id) {
       Optional<Course> optional = reCourse.findById(id);
       if (optional.isPresent()) {

@@ -31,6 +31,12 @@ public class CourseController {
     return pathPrefix + "list";
   }
 
+  @GetMapping("/info")
+  public String info(Model m) {
+   m.addAttribute("courses", seCourse.info());
+   return pathPrefix + "info";
+  }
+
   // These roles must match the ones specified in SecurityConfig.java
   @Secured({"ROLE_TEACHER"})
   @GetMapping("/add")
