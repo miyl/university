@@ -33,7 +33,7 @@ public class CourseController {
 
   @GetMapping("/info")
   public String info(Model m) {
-   m.addAttribute("courses", seCourse.info());
+   m.addAttribute("courses", seCourse.list());
    return pathPrefix + "info";
   }
 

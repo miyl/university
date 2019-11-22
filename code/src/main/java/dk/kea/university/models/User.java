@@ -64,6 +64,9 @@ public class User {
         this.createdAt = createdAt;
     }
 
+    // Required by Spring
+    public User() {}
+
     public int getId() {
         return id;
     }

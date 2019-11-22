@@ -18,7 +18,6 @@ import javax.persistence.JoinTable;
  * Class that holds Course attributes.
  * @Author Tariq and Marcus
  */
-
 @Entity
 public class Course {
 
@@ -97,6 +96,9 @@ public class Course {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "course_id"))
     private Set<User> usersTeaching;
+
+    // Required by Spring
+    public Course() {}
 
     public Course(int id, String name_da, String name_en, int semester, String class_code, String study_programme, String mandatory_or_elective, int ects, String course_language, int min_students, int max_students, int expected_students, String prerequisities, String learning_outcome, String content, String exam_form) {
         this.id = id;
