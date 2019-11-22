@@ -8,107 +8,194 @@
 
 <body class='list'>
 
-  <!-- Fragment af top-navigation.-->
-  <div th:insert="fragments/topnav">Menu</div>
+<!-- Fragment af top-navigation.-->
+<div th:insert="fragments/topnav">Menu</div>
 
-  <div class="container-fluid">
+<div class="container-fluid">
 
-      <h3>Course List</h3>
-      <hr>
+    <h3>Course Info</h3>
+    <hr>
 
-      <a href="/courses/add"><button>Add Course</button></a>
+    <a href="/courses/add"><button>Add Course</button></a>
+
+<!-- The following is an attempt to make a course-info-page like the one in the assignment desc-->
+<!-- This page will show the details about the chosen course. Not sure about the logic behind it yet-->
+    <table class="table table-hover table-striped">
+        <thead class="thead-light">
+            <th class="font-weight-bol">ID</th>
+            <th class="font-weight-light">Info here</th>
+        </thead>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Name (Danish)</th>
+            <th class="font-weight-light">Info here Info here Info here Info here Info here Info here Info here Info here Info here Info here Info hereInfo hereInfo hereInfo hereInfo here Info here Info here Info here </th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Name (English)</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Semester</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Class Code</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Study Programme</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Mandatory or Elective</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">ECTS</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Minimum # of Students</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Maximum # of Students</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Expected # of Students</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Prerequisites</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Learning Outcome</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Content</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Learning Activities</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Exam Form</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
+        <tr>
+            <thead class="thead-light">
+            <th class="font-weight-bol">Teachers</th>
+            <th class="font-weight-light">Info here</th>
+            </thead>
+        </tr>
 
 
-      <table class="table table-hover table-striped">
-          <thead class="thead bg-dark">
-              <tr>
-                  <th class="text-white">ID                    </th>
-                  <th class="text-white">Name (Danish)         </th>
-                  <th class="text-white">Name (English)        </th>
-                  <th class="text-white">Semester              </th>
-                  <th class="text-white">Class Code            </th>
-                  <th class="text-white">Study Programme       </th>
-                  <th class="text-white">Mandatory or Elective </th>
-                  <th class="text-white">ECTS                  </th>
-                  <th class="text-white">Course Language       </th>
-                  <th class="text-white">Minimum # of Students </th>
-                  <th class="text-white">Maxiumum # of Students</th>
-                  <th class="text-white">Expected # of Students</th>
-                  <th class="text-white">Prerequisites         </th>
-                  <th class="text-white">Learning Outcome      </th>
-                  <th class="text-white">Content               </th>
-                  <th class="text-white">Learning Activities   </th>
-                  <th class="text-white">Exam Form             </th>
-                  <th class="text-white">Teachers              </th>
-                  <!-- marcus: I realize this is very messy so maybe we need to relocate this or other data elsewhere: -->
-                  <!-- Teacher only, only the courses she/he teaches -->
-                  <th class="text-white">Edit course                </th>
-                  <!-- Administration worker only. Approve student signup is its own page (in the menu) rather than here. -->
-                  <th class="text-white">Students/Teachers in course</th>
-                  <!-- Student/Teacher only -->
-                  <th class="text-white">Sign up in course          </th>
-                  <!-- Part of CRUD, but who can do this? -->
-                  <th class="text-white">Delete course              </th>
 
-              </tr>
-          </thead>
+    </table>
+            <!-- marcus: I realize this is very messy so maybe we need to relocate this or other data elsewhere: -->
+            <!-- Teacher only, only the courses she/he teaches -->
 
-          <tbody>
-          <!-- tempEmployee = Loop parameter-->
-          <!--                  : = Loops over list of Courses-->
-          <!--                      Courses comes from Java code-->
-          <tr th:each="course : ${courses}">
-              <td th:text="${course.id}"                    ></td>
-              <td th:text="${course.name_da}"               ></td>
-              <td th:text="${course.name_en}"               ></td>
-              <td th:text="${course.semester}"              ></td>
-              <td th:text="${course.class_code}"            ></td>
-              <td th:text="${course.study_programme}"       ></td>
-              <td th:text="${course.mandatory_or_elective}" ></td>
-              <td th:text="${course.ects}"                  ></td>
-              <td th:text="${course.course_language}"       ></td>
-              <td th:text="${course.min_students}"          ></td>
-              <td th:text="${course.max_students}"          ></td>
-              <td th:text="${course.expected_students}"     ></td>
-              <td th:text="${course.prerequisites}}"        ></td>
-              <td th:text="${course.learning_outcome}"      ></td>
-              <td th:text="${course.content}"               ></td>
-              <td th:text="${course.exam_form}"             ></td>
-              <td>
-                  <form action="/courses/update" method='POST'>
-                      <input type="hidden" th:value="${course.id}" id="id"/>
-                      <input type="submit" value="Update"/>
-                  </form>
 
-                  <form action="/courses/delete" method='POST'>
-                      <input type="hidden" th:value="${course.id}" id="id"/>
-                      <input type="submit" value="Delete" onclick="getConfirmation()" />
-                  </form>
+         <th class="text-white">Edit course                </th>
+            <!-- Administration worker only. Approve student signup is its own page (in the menu) rather than here. -->
 
-              </td>
+
+         <th class="text-white">Students/Teachers in course</th>
+         <!-- Student/Teacher only -->
+         <th class="text-white">Sign up in course          </th>
+         <!-- Part of CRUD, but who can do this? -->
+         <th class="text-white">Delete course              </th>
+
+
+     <tbody>
+     <!-- tempEmployee = Loop parameter-->
+        <!--                  : = Loops over list of Courses-->
+        <!--                      Courses comes from Java code-->
+        <tr th:each="course : ${courses}">
+            <td th:text="${course.id}"                    ></td>
+            <td th:text="${course.name_da}"               ></td>
+            <td th:text="${course.name_en}"               ></td>
+            <td th:text="${course.semester}"              ></td>
+            <td th:text="${course.class_code}"            ></td>
+            <td th:text="${course.study_programme}"       ></td>
+            <td th:text="${course.mandatory_or_elective}" ></td>
+            <td th:text="${course.ects}"                  ></td>
+            <td th:text="${course.course_language}"       ></td>
+            <td th:text="${course.min_students}"          ></td>
+            <td th:text="${course.max_students}"          ></td>
+            <td th:text="${course.expected_students}"     ></td>
+            <td th:text="${course.prerequisites}}"        ></td>
+            <td th:text="${course.learning_outcome}"      ></td>
+            <td th:text="${course.content}"               ></td>
+            <td th:text="${course.exam_form}"             ></td>
+            <td>
+                <form action="/courses/update" method='POST'>
+                    <input type="hidden" th:value="${course.id}" id="id"/>
+                    <input type="submit" value="Update"/>
+                </form>
+
+                <form action="/courses/delete" method='POST'>
+                    <input type="hidden" th:value="${course.id}" id="id"/>
+                    <input type="submit" value="Delete" onclick="getConfirmation()" />
+                </form>
+
+            </td>
 
 
 
-              <!-- Unnecessary -->
-              <script type = "text/javascript">
+            <!-- Unnecessary -->
+            <script type = "text/javascript">
 
-                  function getConfirmation() {
-                      var warning = confirm("By accepting, you will delete the Course with its related API-key(s) and HTTP-Requst type(s)");
+                function getConfirmation() {
+                    var warning = confirm("By accepting, you will delete the Course with its related API-key(s) and HTTP-Requst type(s)");
 
-                      if(warning == true) {
+                    if(warning == true) {
 
-                      }
-                      else {
-                          //warning == false;
-                      }
-                  }
-              </script>
+                    }
+                    else {
+                        //warning == false;
+                    }
+                }
+            </script>
 
 
-              <!--</tr> -->
-          </tbody>
-      </table>
-  </div>
+            <!--</tr> -->
+        </tbody>
+    </table>
+</div>
 
 
 </body>
