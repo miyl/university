@@ -33,23 +33,23 @@
         <!-- tempEmployee = Loop parameter-->
         <!--                  : = Loops over list of Courses-->
         <!--                      Courses comes from Java code-->
-        <tr th:each="course : ${courses}">
-            <td th:text="${course.id}"               ></td>
-            <td th:text="${course.name_da}"          ></td>
-            <td th:text="${course.name_en}"          ></td>
+        <tr th:each="c : ${courses}">
+            <td th:text="${c.id}"               ></td>
+            <td th:text="${c.name_da}"          ></td>
+            <td th:text="${c.name_en}"          ></td>
 
             <td>
                 <form action="/courses/update" method='POST'>
-                    <input type="hidden" th:value="${course.id}" id="id"/>
+                    <input type="hidden" th:value="${c.id}" id="id"/>
                     <input type="submit" value="Update"/>
                 </form>
 
                 <form action="/courses/delete" method='POST'>
-                    <input type="hidden" th:value="${course.id}" id="id"/>
+                    <input type="hidden" th:value="${c.id}" id="id"/>
                     <input type="submit" value="Delete" onclick="getConfirmation()" />
                 </form>
 
-                <a href='/courses/info' class='btn btn-sm'>Course Details</a>
+                <a th:href="@{'/courses/info/' + ${c.id}}" class='btn btn-sm'>Course Details</a>
 
             </td>
 

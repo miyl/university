@@ -37,149 +37,98 @@
 
     <!-- Administration worker only. Approve student signup is its own page (in the menu) rather than here. -->
     <form>
-        <button type="button" class="btn btn-secondary btn-sm">Students/Teachers in Course  </button>
+        <button type="button" class="btn btn-secondary btn-sm">Students/Teachers in Course</button>
     </form>
     <!-- Student/Teacher only -->
     <form>
-        <button type="button" class="btn btn-secondary btn-sm">Sign up                      </button>
+        <button type="button" class="btn btn-secondary btn-sm">Sign up</button>
     </form>
     <!-- Part of CRUD, but who can do this? -->
     <form>
-        <button type="button" class="btn btn-secondary btn-sm">Delete Course                </button>
+        <button type="button" class="btn btn-secondary btn-sm">Delete Course</button>
     </form>
 
 
     <!-- The following is an attempt to make a course-info-page like the one in the assignment desc-->
 <!-- This page will show the details about the chosen course. Not sure about the logic behind it yet-->
-    <table class="table table-hover table-striped">
-        <thead class="thead-light">
-            <th class="font-weight-bol">ID                      </th>
-            <th class="font-weight-light">Info here             </th>
-        </thead>
+    <table th:object="${course}" class="table table-hover table-striped">
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Name (Danish)           </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol thead-light">ID</td>
+            <td class="font-weight-light" th:field="*{id}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Name (English)          </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Name (Danish)</td>
+            <td class="font-weight-light" th:field="*{name_da}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Semester                </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Name (English)</td>
+            <td class="font-weight-light" th:field="*{name_en}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Class Code              </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Semester</td>
+            <td class="font-weight-light" th:field="*{semester}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Study Programme         </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Class Code</td>
+            <td class="font-weight-light" th:field="*{class_code}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Mandatory or Elective  </th>
-            <th class="font-weight-light">Info here            </th>
-            </thead>
+            <td class="font-weight-bol">Study Programme</td>
+            <td class="font-weight-light" th:field="*{study_programme}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">ECTS                    </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Mandatory or Elective</td>
+            <td class="font-weight-light" th:field="*{mandatory_or_elective}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Minimum # of Students   </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">ECTS</td>
+            <td class="font-weight-light" th:field="*{ects}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Maximum # of Students   </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Minimum # of Students</td>
+            <td class="font-weight-light" th:field="*{min_students}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Expected # of Students  </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Maximum # of Students</td>
+            <td class="font-weight-light" th:field="*{max_students}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Prerequisites           </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Expected # of Students</td>
+            <td class="font-weight-light" th:field="*{expected_students}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Learning Outcome        </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Prerequisites</td>
+            <td class="font-weight-light" th:field="*{prerequisites}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Content                 </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Learning Outcome</td>
+            <td class="font-weight-light" th:field="*{learning_outcome}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Learning Activities     </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Content</td>
+            <td class="font-weight-light" th:field="*{content}">Info here</td>
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Exam Form               </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <!-- This needs to be added to the model! -->
+            <!-- <td class="font-weight-bol">Learning Activities</td> -->
+            <!-- <td class="font-weight-light" th:field="*{learning_activities}">Info here</td> -->
         </tr>
         <tr>
-            <thead class="thead-light">
-            <th class="font-weight-bol">Teachers                </th>
-            <th class="font-weight-light">Info here             </th>
-            </thead>
+            <td class="font-weight-bol">Exam Form</td>
+            <td class="font-weight-light" th:field="*{exam_form}">Info here</td>
         </tr>
-
-
-
+        <!-- this is the many to many relation, we need to handle this differently from the others -->
+        <!--
+        <tr>
+            <td class="font-weight-bol">Teachers</td>
+            <td class="font-weight-light" th:field="*{teachers}">Info here</td>
+        </tr>
+        -->
     </table>
 
 
      <tbody>
-     <!-- tempEmployee = Loop parameter-->
-        <!--                  : = Loops over list of Courses-->
-        <!--                      Courses comes from Java code-->
-        <tr th:each="course : ${courses}">
-            <td th:text="${course.id}"                    ></td>
-            <td th:text="${course.name_da}"               ></td>
-            <td th:text="${course.name_en}"               ></td>
-            <td th:text="${course.semester}"              ></td>
-            <td th:text="${course.class_code}"            ></td>
-            <td th:text="${course.study_programme}"       ></td>
-            <td th:text="${course.mandatory_or_elective}" ></td>
-            <td th:text="${course.ects}"                  ></td>
-            <td th:text="${course.course_language}"       ></td>
-            <td th:text="${course.min_students}"          ></td>
-            <td th:text="${course.max_students}"          ></td>
-            <td th:text="${course.expected_students}"     ></td>
-            <td th:text="${course.prerequisites}}"        ></td>
-            <td th:text="${course.learning_outcome}"      ></td>
-            <td th:text="${course.content}"               ></td>
-            <td th:text="${course.exam_form}"             ></td>
-            <td>
+       <!--
                 <form action="/courses/update" method='POST'>
                     <input type="hidden" th:value="${course.id}" id="id"/>
                     <input type="submit" value="Update"/>
@@ -192,7 +141,7 @@
 
             </td>
 
-
+       -->
 
             <!-- Unnecessary -->
             <script type = "text/javascript">

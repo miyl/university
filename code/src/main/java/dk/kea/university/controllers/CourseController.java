@@ -31,9 +31,9 @@ public class CourseController {
     return pathPrefix + "list";
   }
 
-  @GetMapping("/info")
-  public String info(Model m) {
-   m.addAttribute("courses", seCourse.list());
+  @GetMapping("/info/{idc}")
+  public String info(Model m, @PathVariable("idc") int id) {
+   m.addAttribute("course", seCourse.findCourse(id));
    return pathPrefix + "info";
   }
 
