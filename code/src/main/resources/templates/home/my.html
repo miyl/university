@@ -12,7 +12,8 @@
   <div th:insert="fragments/topnav">Menu</div>
 
   <h3>My Courses</h3>
-  <hr>
+
+  <a th:href="@{'/courses/update/' + ${c.id}}" class="btn btn-secondary btn-sm">Update Course</a>
 
 </body>
 </html>
