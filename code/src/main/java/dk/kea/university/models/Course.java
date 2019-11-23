@@ -91,9 +91,6 @@ public class Course {
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private Set<User> usersFollowing;
 
-    // Required by Spring
-    public Course() {
-    }
 
     public int getId() {
         return id;

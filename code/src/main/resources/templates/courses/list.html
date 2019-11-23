@@ -2,9 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
     <!-- Purpose of this list is to display quick-info about the course. A fully list can be seen when "show more" is selected-->
     <!--/*/ <th:block th:include="fragments/header.html"> </th:block> /*/-->
     <title>Course Info</title>
+
 </head>
 
 <body class='list'>
@@ -41,15 +43,15 @@
             <td>
                 <form action="/courses/update" method='POST'>
                     <input type="hidden" th:value="${c.id}" id="id"/>
-                    <input type="submit" value="Update"/>
+                    <input type="submit" class='btn btn-secondary btn-sm' value="Update"/>
                 </form>
 
                 <form action="/courses/delete" method='POST'>
                     <input type="hidden" th:value="${c.id}" id="id"/>
-                    <input type="submit" value="Delete" onclick="getConfirmation()" />
+                    <input type="submit" value="Delete" class='btn btn-secondary btn-sm' onclick="getConfirmation()" />
                 </form>
 
-                <a th:href="@{'/courses/info/' + ${c.id}}" class='btn btn-sm'>Course Details</a>
+                <a th:href="@{'/courses/info/' + ${c.id}}" class='btn btn-secondary btn-sm'>Course Details</a>
 
             </td>
 

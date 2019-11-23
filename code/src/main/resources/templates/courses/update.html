@@ -18,55 +18,57 @@
       <div class="col py-3 px-lg-5 border bg-light">
           <!-- hidden input felt til at få id med -->
           <input type="hidden" name="id" th:value="${course.id}">
-          <input type="text" name="name-danish" class="form-control" th:value="${course.name-danish}">
+          <input type="text" name="name-da" class="form-control" th:value="${course.name_da}">
       </div>
+
+
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="text" name="name-english" class="form-control" th:value="${course.description-english}">
+          <input type="text" name="name-english" class="form-control" th:value="${course.name_en}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
           <input type="number" name="semester" class="form-control" th:value="${course.semester}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="text" name="class-code" class="form-control" th:value="${course.class-code}">
+          <input type="text" name="class-code" class="form-control" th:value="${course.class_code}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="text" name="study-programme" class="form-control" th:value="${course.study-programme}">
+          <input type="text" name="study-programme" class="form-control" th:value="${course.study_programme}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="text" name="mandatory-or-elective" class="form-control" th:value="${course.mandatory-or-elective}">
+          <input type="text" name="mandatory-or-elective" class="form-control" th:value="${course.mandatory_or_elective}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
           <input type="number" name="ects" class="form-control" th:value="${course.ects}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="text" name="course-language" class="form-control" th:value="${course.course-language}">
+          <input type="text" name="course-language" class="form-control" th:value="${course.course_language}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="number" name="min-students" class="form-control" th:value="${course.min-students}">
+          <input type="number" name="min-students" class="form-control" th:value="${course.min_students}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="number" name="max-students" class="form-control" th:value="${course.max-students}">
+          <input type="number" name="max-students" class="form-control" th:value="${course.max_students}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="number" name="expected-students" class="form-control" th:value="${course.expected-students}">
+          <input type="number" name="expected-students" class="form-control" th:value="${course.expected_students}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="prerequisites" name="class-code" class="form-control" th:value="${course.prerequisites}">
+          <input type="text" name="prerequisites" class="form-control" th:value="${course.prerequisites}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="text" name="learning-outcome" class="form-control" th:value="${course.learning-outcome}">
+          <input type="text" name="learning-outcome" class="form-control" th:value="${course.learning_outcome}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
           <input type="text" name="content" class="form-control" th:value="${course.content}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="text" name="exam-form" class="form-control" th:value="${course.exam-form}">
+          <input type="text" name="exam-form" class="form-control" th:value="${course.exam_form}">
       </div>
       <div class="col py-3 px-lg-5 border bg-light">
-          <input type="text" name="teacers" class="form-control" th:value="${course.teachers}">
+          <input type="text" name="teachers" class="form-control" th:value="${course.teachers}">
       </div>
 
-
-
+        <button type="submit">Update</button>
+  </form>
 </body>
 </html>

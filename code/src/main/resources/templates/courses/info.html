@@ -3,11 +3,6 @@
 
 <head>
     <!-- Method in Form is CSS that makes the buttons stay line by line-->
-    <style>
-        form{
-            display:inline;
-        }
-    </style>
     <!--/*/ <th:block th:include="fragments/header.html"> </th:block> /*/-->
     <title>Course List</title>
 </head>
@@ -24,36 +19,22 @@
     <h3>Course Info</h3>
     <hr>
 
-    <!-- TODO: Change 'Form' to a href -->
-
-
-    <form action="/courses/list">
-        <button type="submit" class="btn btn-secondary btn-sm">Return to List               </button>
-    </form>
-
+    <a href="/courses/list" class="btn btn-secondary btn-sm"> Return to List            </a>
     <!-- marcus: I realize this is very messy so maybe we need to relocate this or other data elsewhere: -->
     <!-- Teacher only, only the courses she/he teaches -->
-    <a href="/courses/update/" class="btn btn-secondary btn-sm">Edit Course</a>
-
+    <a href="/courses/update/" class="btn btn-secondary btn-sm">Edit Course             </a>
     <!-- Administration worker only. Approve student signup is its own page (in the menu) rather than here. -->
-    <form>
-        <button type="button" class="btn btn-secondary btn-sm">Students/Teachers in Course</button>
-    </form>
+    <a href="/courses/my" class="btn btn-secondary btn-sm">Students/Teachers in Course  </a>
     <!-- Student/Teacher only -->
-    <form>
-        <button type="button" class="btn btn-secondary btn-sm">Sign up</button>
-    </form>
+    <a href="/student-signup-requests" class="btn btn-secondary btn-sm"> Sign Up        </a>
     <!-- Part of CRUD, but who can do this? -->
-    <form>
-        <button type="button" class="btn btn-secondary btn-sm">Delete Course</button>
-    </form>
-
+    <a href="/courses/delete" class="btn btn-secondary btn-sm">Delete Course            </a>
 
     <!-- The following is an attempt to make a course-info-page like the one in the assignment desc-->
 <!-- This page will show the details about the chosen course. Not sure about the logic behind it yet-->
     <table th:object="${course}" class="table table-hover table-striped">
         <tr>
-            <td class="font-weight-bol thead-light">ID</td>
+            <td class="font-weight-bol">ID</td>
             <td class="font-weight-light" th:text="*{id}">Info here</td>
         </tr>
         <tr>
@@ -83,6 +64,10 @@
         <tr>
             <td class="font-weight-bol">ECTS</td>
             <td class="font-weight-light" th:text="*{ects}">Info here</td>
+        </tr>
+        <tr>
+            <td class="font-weight-bol">Maximum # of Students</td>
+            <td class="font-weight-light" th:text="*{course_language}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Minimum # of Students</td>
@@ -126,9 +111,9 @@
         -->
     </table>
 
-
+<!--
      <tbody>
-       <!--
+
                 <form action="/courses/update" method='POST'>
                     <input type="hidden" th:value="${course.id}" id="id"/>
                     <input type="submit" value="Update"/>
@@ -141,13 +126,15 @@
 
             </td>
 
-       -->
+            -->
+
+
 
             <!-- Unnecessary -->
             <script type = "text/javascript">
 
                 function getConfirmation() {
-                    var warning = confirm("By accepting, you will delete the Course with its related API-key(s) and HTTP-Requst type(s)");
+                    var warning = confirm("By accepting, you will delete the Course");
 
                     if(warning == true) {
 
