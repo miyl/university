@@ -65,9 +65,8 @@ public class CourseController {
         return "redirect:/";
     }
 
-    @Secured({"ROLE_ADMIN"})
     @PostMapping("/delete")
-    public String delete(@RequestParam int id) {
+    public String delete(@RequestParam("id") int id) {
         seCourse.delete(id);
         return "redirect:/";
     }

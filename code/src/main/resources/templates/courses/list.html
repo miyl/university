@@ -38,7 +38,7 @@
                     <input type="hidden" th:value="${c.id}" name="id"/>
                     <input type="submit" value="Sign Up" class='btn btn-secondary btn-sm'/>
                 </form>
-                <form action="/courses/delete" method='POST' class="forms">
+                <form th:action="@{/courses/delete}" method='POST' class="forms">
                     <input type="hidden" th:value="${c.id}" name="id"/>
                     <input type="submit" value="Delete" class='btn btn-secondary btn-sm'/>
                 </form>

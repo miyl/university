@@ -5,7 +5,7 @@
 - Own API for JQuery/JS
 - JQuery dynamic updates 
 - Third party API integration
-- CUD on courses. In add you need to be able to add any teachers
+- Create + Update on courses. In add you need to be able to add any teachers
 - My courses
 - Student signup requests
 
