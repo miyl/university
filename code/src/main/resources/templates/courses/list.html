@@ -26,8 +26,6 @@
             <th class="text-white">Name (Danish)         </th>
             <th class="text-white">Name (English)        </th>
             <th class="text-white">Edit                  </th>
-
-
         </tr>
         </thead>
 
@@ -41,10 +39,14 @@
             <td th:text="${c.name_en}"          ></td>
 
             <td>
-                <form action="/courses/update" method='POST'>
-                    <input type="hidden" th:value="${c.id}" id="id"/>
+
+                <!-- <a th:href="@{'/courses/update/' + ${c.id}}" class="btn btn-secondary btn-sm">Update Course</a> -->
+
+                <form action="/courses/update/" method='GET'>
+                    <input type="hidden" th:value="${c.id}" name="id"/>
                     <input type="submit" class='btn btn-secondary btn-sm' value="Update"/>
                 </form>
+
 
                 <form action="/courses/delete" method='POST'>
                     <input type="hidden" th:value="${c.id}" id="id"/>

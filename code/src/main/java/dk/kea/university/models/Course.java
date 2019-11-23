@@ -85,6 +85,10 @@ public class Course {
     @NotBlank
     private String exam_form;
 
+    @Column(nullable = false)
+    @NotBlank
+    private String learning_activities;
+
     @ManyToMany
     @JoinTable(name = "courses_students",
             joinColumns = @JoinColumn(name = "course_id"),
@@ -219,6 +223,10 @@ public class Course {
     public void setExam_form(String exam_form) {
         this.exam_form = exam_form;
     }
+
+    public String getLearning_activities() { return learning_activities; }
+
+    public void setLearning_activities(String learning_activities) { this.learning_activities = learning_activities; }
 
     // Needed because they're sometimes stored in a Set
     public int hashCode() {

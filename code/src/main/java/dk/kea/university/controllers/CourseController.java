@@ -52,7 +52,7 @@ public class CourseController {
 
   // Should probably take a specific course as input? You get here by clicking edit on a specific on a course in the list you're responsible for as a teacher (there can be multiple)
   @Secured({"ROLE_TEACHER"})
-  @GetMapping("/update/{id}")
+  @GetMapping("/update/")
   public String update(@RequestParam("id") int id, Model model){
     model.addAttribute("course", seCourse.findCourse(id));
 

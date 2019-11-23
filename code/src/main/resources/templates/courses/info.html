@@ -11,9 +11,6 @@
 <div th:insert="fragments/topnav">Menu</div>
 
 <body class='list'>
-
-
-
 <div class="container-fluid">
 
     <h3>Course Info</h3>
@@ -22,7 +19,7 @@
     <a href="/courses/list" class="btn btn-secondary btn-sm"> Return to List            </a>
     <!-- marcus: I realize this is very messy so maybe we need to relocate this or other data elsewhere: -->
     <!-- Teacher only, only the courses she/he teaches -->
-    <a href="/courses/update/" class="btn btn-secondary btn-sm">Edit Course             </a>
+    <a href="/courses/update" class="btn btn-secondary btn-sm">Edit Course             </a>
     <!-- Administration worker only. Approve student signup is its own page (in the menu) rather than here. -->
     <a href="/courses/my" class="btn btn-secondary btn-sm">Students/Teachers in Course  </a>
     <!-- Student/Teacher only -->
@@ -35,63 +32,63 @@
     <table th:object="${course}" class="table table-hover table-striped">
         <tr>
             <td class="font-weight-bol">ID</td>
-            <td class="font-weight-light" th:text="*{id}">Info here</td>
+            <td class="font-weight-light" th:text="*{id}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Name (Danish)</td>
-            <td class="font-weight-light" th:text="*{name_da}">Info here</td>
+            <td class="font-weight-light" th:text="*{name_da}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Name (English)</td>
-            <td class="font-weight-light" th:text="*{name_en}">Info here</td>
+            <td class="font-weight-light" th:text="*{name_en}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Semester</td>
-            <td class="font-weight-light" th:text="*{semester}">Info here</td>
+            <td class="font-weight-light" th:text="*{semester}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Class Code</td>
-            <td class="font-weight-light" th:text="*{class_code}">Info here</td>
+            <td class="font-weight-light" th:text="*{class_code}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Study Programme</td>
-            <td class="font-weight-light" th:text="*{study_programme}">Info here</td>
+            <td class="font-weight-light" th:text="*{study_programme}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Mandatory or Elective</td>
-            <td class="font-weight-light" th:text="*{mandatory_or_elective}">Info here</td>
+            <td class="font-weight-light" th:text="*{mandatory_or_elective}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">ECTS</td>
-            <td class="font-weight-light" th:text="*{ects}">Info here</td>
+            <td class="font-weight-light" th:text="*{ects}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Maximum # of Students</td>
-            <td class="font-weight-light" th:text="*{course_language}">Info here</td>
+            <td class="font-weight-light" th:text="*{course_language}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Minimum # of Students</td>
-            <td class="font-weight-light" th:text="*{min_students}">Info here</td>
+            <td class="font-weight-light" th:text="*{min_students}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Maximum # of Students</td>
-            <td class="font-weight-light" th:text="*{max_students}">Info here</td>
+            <td class="font-weight-light" th:text="*{max_students}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Expected # of Students</td>
-            <td class="font-weight-light" th:text="*{expected_students}">Info here</td>
+            <td class="font-weight-light" th:text="*{expected_students}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Prerequisites</td>
-            <td class="font-weight-light" th:text="*{prerequisites}">Info here</td>
+            <td class="font-weight-light" th:text="*{prerequisites}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Learning Outcome</td>
-            <td class="font-weight-light" th:text="*{learning_outcome}">Info here</td>
+            <td class="font-weight-light" th:text="*{learning_outcome}"></td>
         </tr>
         <tr>
             <td class="font-weight-bol">Content</td>
-            <td class="font-weight-light" th:text="*{content}">Info here</td>
+            <td class="font-weight-light" th:text="*{content}"></td>
         </tr>
         <tr>
             <!-- This needs to be added to the model! -->
@@ -111,7 +108,7 @@
         -->
     </table>
 
-<!--
+
      <tbody>
 
                 <form action="/courses/update" method='POST'>
@@ -126,7 +123,6 @@
 
             </td>
 
-            -->
 
 
 
