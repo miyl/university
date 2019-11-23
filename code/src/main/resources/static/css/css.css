@@ -1,12 +1,12 @@
 .container-fluid {
-  padding-left: 0;
+  padding: 0;
 }
 
 form input {
   display: block;
 }
 
- a{
+ a, form#delete {
    display:inline;
  }
 

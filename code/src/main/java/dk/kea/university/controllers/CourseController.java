@@ -52,8 +52,8 @@ public class CourseController {
 
   // Should probably take a specific course as input? You get here by clicking edit on a specific on a course in the list you're responsible for as a teacher (there can be multiple)
   @Secured({"ROLE_TEACHER"})
-  @GetMapping("/update/")
-  public String update(@RequestParam("id") int id, Model model){
+  @GetMapping("/update/{idc}")
+  public String update(@PathVariable("idc") int id, Model model){
     model.addAttribute("course", seCourse.findCourse(id));
 
     return pathPrefix + "update";
@@ -72,13 +72,6 @@ public class CourseController {
   @PostMapping("/delete")
   public String delete(){
     return "redirect:/";
-  }
-
-  // A list of "My" courses, ie. the courses you're in as a Student, or assigned to as a Teacher.
-  @Secured({"ROLE_STUDENT", "ROLE_TEACHER"})
-  @GetMapping("/my")
-  public String my() {
-    return pathPrefix + "my";
   }
 
 }
