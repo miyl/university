@@ -54,74 +54,74 @@
     <table th:object="${course}" class="table table-hover table-striped">
         <tr>
             <td class="font-weight-bol thead-light">ID</td>
-            <td class="font-weight-light" th:field="*{id}">Info here</td>
+            <td class="font-weight-light" th:text="*{id}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Name (Danish)</td>
-            <td class="font-weight-light" th:field="*{name_da}">Info here</td>
+            <td class="font-weight-light" th:text="*{name_da}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Name (English)</td>
-            <td class="font-weight-light" th:field="*{name_en}">Info here</td>
+            <td class="font-weight-light" th:text="*{name_en}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Semester</td>
-            <td class="font-weight-light" th:field="*{semester}">Info here</td>
+            <td class="font-weight-light" th:text="*{semester}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Class Code</td>
-            <td class="font-weight-light" th:field="*{class_code}">Info here</td>
+            <td class="font-weight-light" th:text="*{class_code}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Study Programme</td>
-            <td class="font-weight-light" th:field="*{study_programme}">Info here</td>
+            <td class="font-weight-light" th:text="*{study_programme}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Mandatory or Elective</td>
-            <td class="font-weight-light" th:field="*{mandatory_or_elective}">Info here</td>
+            <td class="font-weight-light" th:text="*{mandatory_or_elective}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">ECTS</td>
-            <td class="font-weight-light" th:field="*{ects}">Info here</td>
+            <td class="font-weight-light" th:text="*{ects}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Minimum # of Students</td>
-            <td class="font-weight-light" th:field="*{min_students}">Info here</td>
+            <td class="font-weight-light" th:text="*{min_students}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Maximum # of Students</td>
-            <td class="font-weight-light" th:field="*{max_students}">Info here</td>
+            <td class="font-weight-light" th:text="*{max_students}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Expected # of Students</td>
-            <td class="font-weight-light" th:field="*{expected_students}">Info here</td>
+            <td class="font-weight-light" th:text="*{expected_students}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Prerequisites</td>
-            <td class="font-weight-light" th:field="*{prerequisites}">Info here</td>
+            <td class="font-weight-light" th:text="*{prerequisites}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Learning Outcome</td>
-            <td class="font-weight-light" th:field="*{learning_outcome}">Info here</td>
+            <td class="font-weight-light" th:text="*{learning_outcome}">Info here</td>
         </tr>
         <tr>
             <td class="font-weight-bol">Content</td>
-            <td class="font-weight-light" th:field="*{content}">Info here</td>
+            <td class="font-weight-light" th:text="*{content}">Info here</td>
         </tr>
         <tr>
             <!-- This needs to be added to the model! -->
             <!-- <td class="font-weight-bol">Learning Activities</td> -->
-            <!-- <td class="font-weight-light" th:field="*{learning_activities}">Info here</td> -->
+            <!-- <td class="font-weight-light" th:text="*{learning_activities}">Info here</td> -->
         </tr>
         <tr>
             <td class="font-weight-bol">Exam Form</td>
-            <td class="font-weight-light" th:field="*{exam_form}">Info here</td>
+            <td class="font-weight-light" th:text="*{exam_form}">Info here</td>
         </tr>
         <!-- this is the many to many relation, we need to handle this differently from the others -->
         <!--
         <tr>
             <td class="font-weight-bol">Teachers</td>
-            <td class="font-weight-light" th:field="*{teachers}">Info here</td>
+            <td class="font-weight-light" th:text="*{teachers}">Info here</td>
         </tr>
         -->
     </table>
