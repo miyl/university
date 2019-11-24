@@ -12,9 +12,10 @@ import org.springframework.ui.Model;
 import org.springframework.security.access.annotation.Secured;
 
 // Get Spring Security logged in user, experiment for now
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.Authentication;
-import java.util.Collection;
+import org.springframework.security.core.context.SecurityContextHolder;
+import dk.kea.university.security.CustomUserPrincipal;
+import dk.kea.university.models.UserRole;
+import dk.kea.university.models.User;
 
 
 @Controller
@@ -22,6 +23,7 @@ import java.util.Collection;
 public class CourseController {
 
     private final SeCourse seCourse;
+    private User user;
 
     public CourseController(SeCourse seCourse) {
         this.seCourse = seCourse;
@@ -32,10 +34,13 @@ public class CourseController {
     // CRUD
 
     @GetMapping("/list")
-    public String list(Authentication a, Model m) {
-        Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) a.getAuthorities();
-        System.out.println(authorities.toArray()[0]);
+    public String list(Model m) {
+       CustomUserPrincipal p = (CustomUserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        user = p.getUser();
+
         m.addAttribute("courses", seCourse.list());
+        m.addAttribute("userName", user.getUsername());
+        m.addAttribute("userRole", user.getUserRole());
         return pathPrefix + "list";
     }
 
