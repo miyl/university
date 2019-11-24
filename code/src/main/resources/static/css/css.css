@@ -16,3 +16,11 @@ form input {
      top:10px;
      right:10px;
  }
+
+
+#status{
+    display: block;
+    position: absolute;
+    top: 10px;
+    right: 90px;
+}
