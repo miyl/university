@@ -6,7 +6,7 @@ import dk.kea.university.repositories.ReUser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional; // Not used yet but may prove relevant
 import java.lang.Iterable; // why is this in Lang when List is in java.util?
-//import java.util.List;
+// import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,7 +18,7 @@ public class SeUser {
       this.reUser = reUser;
     }
 
-    public int add(User u) {
+    public long add(User u) {
       User saved = reUser.save(u);
       return saved.getId();
     }
@@ -28,7 +28,7 @@ public class SeUser {
       return reUser.findAll();
     }
 
-    public User findUser(int id) {
+    public User findUser(long id) {
       Optional<User> optional = reUser.findById(id);
       if (optional.isPresent()) {
         return optional.get();

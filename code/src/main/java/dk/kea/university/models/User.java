@@ -21,9 +21,18 @@ import java.util.Set;
 @Entity
 public class User {
 
+    // START: Spring Security related
+    // NOTE: Spring Security counts on this particular order of fields (id, username, password) in the database for password authentication, like wtf!:
+    // https://stackoverflow.com/questions/54448451/spring-security-cannot-determine-value-type-from-string-admin
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+
+    @Column(nullable = false, unique = true)
+    private String username;
+
+    private String password;
+    // END: Spring Security related
 
     @Column(nullable = false)
     @NotBlank
@@ -35,12 +44,9 @@ public class User {
 
     @Column(nullable = false)
     @NotBlank
-    private String password;
-
-    @Column(nullable = false)
-    @NotBlank
     private String email;
 
+    // Note: This is zero indexed. If you set a higher number than available in the db, login will fail.
     @NotNull
     @Column(nullable = false)
     private UserRole role;
@@ -52,16 +58,20 @@ public class User {
     @ManyToMany(mappedBy = "usersFollowing")
     private Set<Course> coursesFollowing;
 
-    // Required by Spring
-    public User() {
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+      return username;
+    }
+
+    public void setUsername(String username) {
+      this.username = username;
     }
 
     public String getFirst_name() {

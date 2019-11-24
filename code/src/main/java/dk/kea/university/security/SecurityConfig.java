@@ -1,4 +1,4 @@
-package dk.kea.university;
+package dk.kea.university.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
 // H2 console
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -21,17 +22,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   // These roles are the ones that must match the ones specified with @Secured in the Controllers. The Enum is irrelevant?
-  @Override
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.inMemoryAuthentication()
-      .withUser("max").password(passwordEncoder().encode("p")).roles("STUDENT")
-      .and()
-      .withUser("eve").password(passwordEncoder().encode("p")).roles("TEACHER")
-      .and()
-      .withUser("sskraek").password(passwordEncoder().encode("p")).roles("TEACHER")
-      .and()
-      .withUser("hacker").password(passwordEncoder().encode("p")).roles("ADMIN");
-  }
+//  @Override
+//  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//    auth.inMemoryAuthentication()
+//      .withUser("max").password(passwordEncoder().encode("p")).roles("STUDENT")
+//      .and()
+//      .withUser("eve").password(passwordEncoder().encode("p")).roles("TEACHER")
+//      .and()
+//      .withUser("sskraek").password(passwordEncoder().encode("p")).roles("TEACHER")
+//      .and()
+//      .withUser("hacker").password(passwordEncoder().encode("p")).roles("ADMIN");
+//  }
 
   // Spring Security blocks access to the console so therefore we have this section
   // https://springframework.guru/using-the-h2-database-console-in-spring-boot-with-spring-security/
@@ -48,8 +49,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
        //.logoutSuccessUrl("/login");
   // }
 
+  //@Bean
+  //public PasswordEncoder passwordEncoder() {
+  //  return new BCryptPasswordEncoder();
+  //}
+
+  @SuppressWarnings("deprecation")
   @Bean
-  public PasswordEncoder passwordEncoder() {
-    return new BCryptPasswordEncoder();
+  public static NoOpPasswordEncoder passwordEncoder() {
+    return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
   }
 }

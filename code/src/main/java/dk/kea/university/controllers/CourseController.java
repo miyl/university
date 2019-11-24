@@ -11,6 +11,12 @@ import org.springframework.ui.Model;
 // Security
 import org.springframework.security.access.annotation.Secured;
 
+// Get Spring Security logged in user, experiment for now
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.Authentication;
+import java.util.Collection;
+
+
 @Controller
 @RequestMapping("courses")
 public class CourseController {
@@ -26,7 +32,9 @@ public class CourseController {
     // CRUD
 
     @GetMapping("/list")
-    public String list(Model m) {
+    public String list(Authentication a, Model m) {
+        Collection<GrantedAuthority> authorities = (Collection<GrantedAuthority>) a.getAuthorities();
+        System.out.println(authorities.toArray()[0]);
         m.addAttribute("courses", seCourse.list());
         return pathPrefix + "list";
     }
