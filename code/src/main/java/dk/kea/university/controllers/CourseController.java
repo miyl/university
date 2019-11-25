@@ -1,15 +1,13 @@
 package dk.kea.university.controllers;
 
 import dk.kea.university.models.Course;
-import dk.kea.university.repositories.ReCourse;
 import dk.kea.university.services.SeCourse;
-
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 // Security
-import org.springframework.security.access.annotation.Secured;
 
 
 @Controller
