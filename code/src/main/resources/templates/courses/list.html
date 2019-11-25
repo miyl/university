@@ -14,14 +14,12 @@
 
 <div class="container-fluid">
 
-  <h3>Course List</h3>
+    <!-- TODO: Add something like this whereever you want to print the user name: -->
+    <!--<div sec:authorize="isAuthenticated()"> Authenticated as <span sec:authentication="name"></span></div>-->
+    <!-- And to get the Role: -->
+    <!-- Roles: <span sec:authentication="principal.authorities"></span> -->
 
-  <!-- TODO: Add something like this whereever you want to print the user name: -->
-  <!--<div sec:authorize="isAuthenticated()"> Authenticated as <span sec:authentication="name"></span></div>-->
-  <!-- And to get the Role: -->
-  <!-- Roles: <span sec:authentication="principal.authorities"></span> -->
-<table>
-
+    <h3>Course List</h3>
 
     <a href="/courses/add" class='btn btn-secondary btn-sm'>Add Course</a>
 
@@ -42,7 +40,7 @@
             <td th:text="${c.study_programme}"></td>
             <td th:text="${c.ects}"></td>
             <td>
-                <a th:href="@{'/courses/info/' + ${c.id}}" class='btn btn-secondary btn-sm'>Course Details</a>
+                <a th:href="@{'/courses/info/' + ${c.id}}" class='btn btn-secondary btn-sm'>Details</a>
                 <form th:action="@{/student-signup}" method='POST' class="forms">
                     <input type="hidden" th:value="${c.id}" name="id"/>
                     <input type="submit" value="Sign Up" class='btn btn-secondary btn-sm'/>
@@ -56,7 +54,7 @@
             <script type="text/javascript" th:inline="javascript">
                 /*<![CDATA[*/
                 function getConfirmation() {
-                    var warning = confirm("Are you sure you want to delete " + /*[[${c.name_en}]]*/ + "?");
+                    var warning = confirm("Are you sure you want to delete " + /*[[${c.name_en}]]*/ +"?");
 
                     if (warning) {
                         //true / ok
