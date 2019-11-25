@@ -52,14 +52,14 @@ public class CourseController {
     }
 
     // Should probably take a specific course as input? You get here by clicking edit on a specific on a course in the list you're responsible for as a teacher (there can be multiple)
-    @Secured({"ROLE_TEACHER"})
+    //@Secured({"ROLE_TEACHER"})
     @GetMapping("/update/{idc}")
     public String update(@PathVariable("idc") int id, Model m) {
         m.addAttribute("course", seCourse.findCourse(id));
         return pathPrefix + "update";
     }
 
-    @Secured({"ROLE_TEACHER"})
+    //@Secured({"ROLE_TEACHER"})
     @PostMapping("/update")
     public String pupdate(@ModelAttribute Course course) {
         seCourse.update(course);
