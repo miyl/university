@@ -8,53 +8,116 @@
 
 <body>
 
-  <!-- Fragment af top-navigation.-->
-  <div th:insert="fragments/topnav">Menu</div>
+<!-- Fragment af top-navigation.-->
+<div th:insert="fragments/topnav">Menu</div>
 
-  <h3>Update Course</h3>
-  <hr>
+<h3>Update Course</h3>
 
-  <form action="/courses/update" method="post">
-      <div class="col py-3 px-lg-5 border bg-light">
-          <!-- hidden input felt til at få id med -->
-          <input type="hidden" name="id" th:value="${course.id}">
-          <input type="text" name="name_da" class="form-control" th:value="${course.name_da}">
-      </div>
+<form action="/courses/update" method="post">
+    <input type="hidden" name="id" th:value="${course.id}">
 
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="text" name="name_en" class="form-control" th:value="${course.name_en}"> </div>
+    <button type="submit">Update</button>
+</form>
 
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="number" name="semester" class="form-control" th:value="${course.semester}"> </div>
 
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="text" name="class_code" class="form-control" th:value="${course.class_code}"> </div>
+<table class="table table-hover table-striped">
+    <tr>
+        <th class="font-weight-bol">Name (Danish)</th>
+        <td class="font-weight-light">
+            <input type="text" name="name_da" class="form-control" th:value="*{name_da}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Name (English)</th>
+        <td class="font-weight-light">
+            <input type="text" name="name_en" class="form-control" th:value="*{name_en}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Semester</th>
+        <td class="font-weight-light">
+            <input type="number" name="semester" class="form-control" th:value="*{semester}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Class Code</th>
+        <td class="font-weight-light">
+            <input type="text" name="class_code" class="form-control" th:value="*{class_code}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Study Programme</th>
+        <td class="font-weight-light">
+            <input type="text" name="study_programme" class="form-control" th:value="*{study_programme}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Mandatory or Elective</th>
+        <td class="font-weight-light">
+            <input type="text" name="mandatory_or_elective" class="form-control" th:value="*{mandatory_or_elective}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">ECTS</th>
+        <td class="font-weight-light">
+            <input type="number" name="ects" class="form-control" th:value="*{ects}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Course Language</th>
+        <td class="font-weight-light">
+            <input type="text" name="course_language" class="form-control" th:value="*{course_language}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Minimum # of Students</th>
+        <td class="font-weight-light">
+            <input type="number" name="min_students" class="form-control" th:value="*{min_students}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Maximum # of Students</th>
+        <td class="font-weight-light">
+            <input type="number" name="max_students" class="form-control" th:value="*{max_students}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Expected # of Students</th>
+        <td class="font-weight-light">
+            <input type="number" name="expected_students" class="form-control" th:value="*{expected_students}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Prerequisites</th>
+        <td class="font-weight-light">
+            <input type="text" name="prerequisites" class="form-control" th:value="*{prerequisites}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Learning Outcome</th>
+        <td class="font-weight-light">
+            <input type="text" name="learning_outcome" class="form-control" th:value="*{learning_outcome}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Content</th>
+        <td class="font-weight-light">
+            <input type="text" name="content" class="form-control" th:value="*{content}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Learning Activities</th>
+        <td class="font-weight-light">
+            <input type="text" name="exam_form" class="form-control" th:value="*{exam_form}"/>
+        </td>
+    </tr>
+    <tr>
+        <th class="font-weight-bol">Exam Form</th>
+        <td class="font-weight-light">
+            <input type="text" name="exam_form" class="form-control" th:value="*{exam_form}"/>
+        </td>
+    </tr>
+</table>
 
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="text" name="study_programme" class="form-control" th:value="${course.study_programme}"></div>
-
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="text" name="mandatory_or_elective" class="form-control" th:value="${course.mandatory_or_elective}"></div>
-
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="number" name="ects" class="form-control" th:value="${course.ects}"></div>
-
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="text" name="course_language" class="form-control" th:value="${course.course_language}"> </div>
-
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="number" name="min_students" class="form-control" th:value="${course.min_students}"></div>
-
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="number" name="max_students" class="form-control" th:value="${course.max_students}"></div>
-
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="number" name="expected_students" class="form-control" th:value="${course.expected_students}"></div>
-
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="text" name="prerequisites" class="form-control" th:value="${course.prerequisites}"></div>
-
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="text" name="learning_outcome" class="form-control" th:value="${course.learning_outcome}"></div>
-
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="text" name="content" class="form-control" th:value="${course.content}"></div>
-
-      <div class="col py-3 px-lg-5 border bg-light"> <input type="text" name="exam_form" class="form-control" th:value="${course.exam_form}"></div>
-      <!--
-      <div class="col py-3 px-lg-5 border bg-light">
-          <input type="text" name="teachers" class="form-control" th:value="${course.teachers}">
-      </div>
-      -->
-
-        <button type="submit">Update</button>
-  </form>
 </body>
 </html>
