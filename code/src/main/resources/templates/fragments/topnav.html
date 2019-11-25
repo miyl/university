@@ -8,7 +8,7 @@
             <!-- Also where you sign up for following/teaching one? Also the startpage. -->
             <a class="nav-link" href="/courses/list">Course List</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
             <!-- Administration worker only: Approve student request to sign up for a course. -->
             <a class="nav-link" href="/student-signup-requests">Student signup requests</a>
         </li>

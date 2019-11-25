@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 // Security
 
+// HomeController currently contains pages in the URL root like index, as well as mappings dealing with multiple data types (such as both Users and Courses)
 @Controller
 public class HomeController {
 
@@ -19,31 +20,30 @@ public class HomeController {
 
     String prefixPath = "/home/";
 
-    // TODO: I guess we need a separate Model for these? And a template.
-    //@Secured({"ROLE_ADMIN"})
+    // TODO: Do we need a separate Model for these? And a template. Or don't we?
+    @Secured({"ROLE_ADMIN"})
     @GetMapping("/student-signup-requests")
     public String studentSignupRequests() {
         return prefixPath + "student-signup-requests";
     }
 
-    //@Secured({"ROLE_ADMIN"})
+    @Secured({"ROLE_ADMIN"})
     @PostMapping("/student-signup-requests")
     public String pstudentSignupRequests() {
         return "redirect:/student-signup-requests";
     }
 
     // A list of "My" courses, ie. the courses you're in as a Student, or assigned to as a Teacher.
-    //@Secured({"ROLE_STUDENT", "ROLE_TEACHER"})
+    @Secured({"ROLE_STUDENT", "ROLE_TEACHER"})
     @GetMapping("/my")
     public String my() {
         return prefixPath + "my";
     }
 
-    //TODO: secured
+    @Secured({"ROLE_STUDENT"})
     @PostMapping("/student-signup")
     public void signup(@RequestParam("id") int course_id){
         System.out.println("id: " + course_id);
-
     }
 
 }
