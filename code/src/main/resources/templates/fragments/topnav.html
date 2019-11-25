@@ -22,7 +22,7 @@
 
         <div class="dropdown show" id="status">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span sec:authentication="name"></span>
+              <span sec:authentication="name"></span> (<span id='role' sec:authentication="principal.authorities[0]"></span>)
             </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
