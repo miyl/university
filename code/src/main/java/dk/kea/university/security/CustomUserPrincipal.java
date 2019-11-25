@@ -33,7 +33,8 @@ public class CustomUserPrincipal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        final List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority("User"));
+        // We get our custom role here, which Spring Security in turn uses in the Controller, templates etc.:
+        final List<GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority( user.getRole().name() ));
         return authorities;
     }
 

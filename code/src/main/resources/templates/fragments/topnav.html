@@ -8,10 +8,12 @@
             <!-- Also where you sign up for following/teaching one? Also the startpage. -->
             <a class="nav-link" href="/courses/list">Course List</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" sec:authorize-expr='#authentication.principal.user.userRole == "ADMIN"'>
             <!-- Administration worker only: Approve student request to sign up for a course. -->
             <a class="nav-link" href="/student-signup-requests">Student signup requests</a>
         </li>
+
+        Role: <span sec:authentication="principal.user.userRole"></span>
 
         <!--
         <li class="nav-item">

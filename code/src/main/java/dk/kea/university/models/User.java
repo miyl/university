@@ -106,11 +106,11 @@ public class User {
         this.email = email;
     }
 
-    public UserRole getUserRole() {
+    public UserRole getRole() {
         return role;
     }
 
-    public void setUserRole(UserRole ur) {
+    public void setRole(UserRole ur) {
         role = ur;
     }
 
