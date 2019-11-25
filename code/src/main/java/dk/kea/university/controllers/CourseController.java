@@ -38,7 +38,7 @@ public class CourseController {
         return pathPrefix + "info";
     }
 
-    // These roles must match the ones specified in SecurityConfig.java
+    // These roles must match the ones specified in SecurityConfig.java if using those users or the ones assigned in the database if using a custom User class
     @Secured({"ROLE_TEACHER"})
     @GetMapping("/add")
     public String add() {

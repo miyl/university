@@ -8,12 +8,10 @@
             <!-- Also where you sign up for following/teaching one? Also the startpage. -->
             <a class="nav-link" href="/courses/list">Course List</a>
         </li>
-        <li class="nav-item" sec:authorize-expr='#authentication.principal.user.userRole == "ADMIN"'>
+        <li class="nav-item">
             <!-- Administration worker only: Approve student request to sign up for a course. -->
             <a class="nav-link" href="/student-signup-requests">Student signup requests</a>
         </li>
-
-        Role: <span sec:authentication="principal.user.userRole"></span>
 
         <!--
         <li class="nav-item">
@@ -24,7 +22,7 @@
 
         <div class="dropdown show" id="status">
             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                User
+                <span sec:authentication="name"></span>
             </a>
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
