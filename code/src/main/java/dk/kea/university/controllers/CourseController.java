@@ -64,9 +64,9 @@ public class CourseController {
 
     @Secured({"ROLE_TEACHER"})
     @PostMapping("/update")
-    public String pupdate(@ModelAttribute Course course) {
-        seCourse.update(course);
-        return "redirect:/";
+    public String pupdate(@RequestParam("id") int id) {
+        seCourse.update(id);
+        return "redirect:/courses/info/" + id;
     }
 
     @Secured({"ROLE_ADMIN"})

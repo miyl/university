@@ -39,10 +39,9 @@ public class SeCourse {
     }
 
     //update method
-    public  void update(Course course) {
-        reCourse.save(course);
+    public void update(int id) {
+        reCourse.save(findCourse(id));
     }
-
 
     public void delete(int id) {
         //Sletter eksisterende produkt
