@@ -14,7 +14,11 @@
 
 <div class="container-fluid">
 
-  <h3>Course List for <span th:text="${userName}"></span>, <span th:text="${userRole}"></span> </h3>
+  <h3>Course List</h3>
+
+  <!-- TODO: Add something like this whereever you want to print the user name: -->
+  <!--<div sec:authorize="isAuthenticated()"> Authenticated as <span sec:authentication="name"></span></div>-->
+<table>
 
     <a href="/courses/add" class='btn btn-secondary btn-sm'>Add Course</a>
 

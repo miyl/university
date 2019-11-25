@@ -11,19 +11,12 @@ import org.springframework.ui.Model;
 // Security
 import org.springframework.security.access.annotation.Secured;
 
-// Get Spring Security logged in user, experiment for now
-import org.springframework.security.core.context.SecurityContextHolder;
-import dk.kea.university.security.CustomUserPrincipal;
-import dk.kea.university.models.UserRole;
-import dk.kea.university.models.User;
-
 
 @Controller
 @RequestMapping("courses")
 public class CourseController {
 
     private final SeCourse seCourse;
-    private User user;
 
     public CourseController(SeCourse seCourse) {
         this.seCourse = seCourse;
@@ -33,14 +26,11 @@ public class CourseController {
 
     // CRUD
 
+    // One can get a Principal directly from Spring automatically, but it seems to not be our home grown CustomUserPrincipal and thus it doesn't contain all the data we need.
     @GetMapping("/list")
     public String list(Model m) {
-       CustomUserPrincipal p = (CustomUserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        user = p.getUser();
 
         m.addAttribute("courses", seCourse.list());
-        m.addAttribute("userName", user.getUsername());
-        m.addAttribute("userRole", user.getUserRole());
         return pathPrefix + "list";
     }
 
@@ -66,8 +56,8 @@ public class CourseController {
     // Should probably take a specific course as input? You get here by clicking edit on a specific on a course in the list you're responsible for as a teacher (there can be multiple)
     @Secured({"ROLE_TEACHER"})
     @GetMapping("/update/{idc}")
-    public String update(@PathVariable("idc") int id, Model model) {
-        model.addAttribute("course", seCourse.findCourse(id));
+    public String update(@PathVariable("idc") int id, Model m) {
+        m.addAttribute("course", seCourse.findCourse(id));
         return pathPrefix + "update";
     }
 

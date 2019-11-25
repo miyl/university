@@ -21,7 +21,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  // These roles are the ones that must match the ones specified with @Secured in the Controllers. The Enum is irrelevant?
+// These roles are the ones that must match the ones specified with @Secured in the Controllers. The Enum is irrelevant?
 //  @Override
 //  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //    auth.inMemoryAuthentication()
@@ -39,6 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
   // FIXME: Get logout to work if we switch back to h2.
   // @Override
   // protected void configure(HttpSecurity http) throws Exception {
+       // Default is: http.authorizeRequests().anyRequest().authenticated().and().formLogin().and().httpBasic();
+
        //http.authorizeRequests().antMatchers("/").permitAll().and()
        //.authorizeRequests().antMatchers("/console/**").permitAll().and()
        //.csrf().disable().and().headers().frameOptions().disable().and()
