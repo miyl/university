@@ -14,17 +14,18 @@
 
 <div class="container-fluid">
 
-    <!-- TODO: Add something like this whereever you want to print the user name: -->
-    <!--<div sec:authorize="isAuthenticated()"> Authenticated as <span sec:authentication="name"></span></div>-->
-    <!-- And to get the Role: -->
-    <!-- Roles: <span sec:authentication="principal.authorities"></span> -->
 
-    <h3>Course List</h3>
+  <!-- TODO: Add something like this whereever you want to print the user name: -->
+  <!--<div sec:authorize="isAuthenticated()"> Authenticated as <span sec:authentication="name"></span></div>-->
+  <!-- And to get the Role: -->
+  <!-- Roles: <span sec:authentication="principal.authorities"></span> -->
 
-    <a href="/courses/add" class='btn btn-secondary btn-sm'>Add Course</a>
+  <h3>Course List</h3>
 
-    <table class="table table-hover table-striped">
-        <thead class="thead bg-dark">
+  <a href="/courses/add" sec:authorize="hasRole('ROLE_TEACHER')" class='btn btn-secondary btn-sm'>Add Course</a>
+
+  <table class="table table-hover table-striped">
+      <thead class="thead bg-dark">
         <tr>
             <th class="text-white">ID</th>
             <th class="text-white">Name (English)</th>
@@ -32,20 +33,20 @@
             <th class="text-white">ECTS</th>
             <th class="text-white">Actions</th>
         </tr>
-        </thead>
-        <tbody>
+      </thead>
+      <tbody>
         <tr th:each="c : ${courses}">
             <td th:text="${c.id}"></td>
             <td th:text="${c.name_en}"></td>
             <td th:text="${c.study_programme}"></td>
             <td th:text="${c.ects}"></td>
             <td>
-                <a th:href="@{'/courses/info/' + ${c.id}}" class='btn btn-secondary btn-sm'>Details</a>
-                <form th:action="@{/student-signup}" method='POST' class="forms">
+                <a th:href="@{'/courses/info/' + ${c.id}}" class='btn btn-secondary btn-sm'>Course Details</a>
+                <form action="/student-signup" method='POST' sec:authorize="hasRole('ROLE_STUDENT')" class="forms">
                     <input type="hidden" th:value="${c.id}" name="id"/>
                     <input type="submit" value="Sign Up" class='btn btn-secondary btn-sm'/>
                 </form>
-                <form th:action="@{/courses/delete}" method='POST' class="forms">
+                <form th:action="@{/courses/delete}" method='POST' sec:authorize="hasRole('ROLE_ADMIN')" class="forms">
                     <input type="hidden" th:value="${c.id}" name="id"/>
                     <input type="submit" value="Delete" class='btn btn-secondary btn-sm'/>
                 </form>
@@ -54,7 +55,7 @@
             <script type="text/javascript" th:inline="javascript">
                 /*<![CDATA[*/
                 function getConfirmation() {
-                    var warning = confirm("Are you sure you want to delete " + /*[[${c.name_en}]]*/ +"?");
+                    var warning = confirm("Are you sure you want to delete " + /*[[${c.name_en}]]*/ + "?");
 
                     if (warning) {
                         //true / ok
@@ -66,8 +67,8 @@
             </script>
 
         </tr>
-        </tbody>
-    </table>
+      </tbody>
+  </table>
 
 </div>
 
