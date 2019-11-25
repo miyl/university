@@ -12,14 +12,14 @@
 <!-- Fragment af top-navigation.-->
 <div th:insert="fragments/topnav">Menu</div>
 
-<div th:object="${course}"  class="container-fluid">
+<div th:object="${course}" class="container-fluid">
 
     <h3>Course Info</h3>
 
-    <a href="/courses/list" class="btn btn-secondary btn-sm">Return to List</a>
+    <a href="/courses/list" class="btn btn-secondary btn-sm">Back</a>
     <!-- marcus: I realize this is very messy so maybe we need to relocate this or other data elsewhere: -->
     <!-- Teacher only, only the courses she/he teaches -->
-    <a href="/courses/update" class="btn btn-secondary btn-sm">Update</a>
+    <a th:href="@{'/courses/update/' + *{id}}" class="btn btn-secondary btn-sm">Update</a>
     <!-- Administration worker only. Approve student signup is its own page (in the menu) rather than here. -->
     <a href="/courses/my" class="btn btn-secondary btn-sm">Students/Teachers in Course</a>
     <!-- Student/Teacher only -->
