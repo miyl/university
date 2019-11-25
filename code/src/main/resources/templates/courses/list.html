@@ -43,7 +43,7 @@
             <td th:text="${c.ects}"></td>
             <td>
                 <a th:href="@{'/courses/info/' + ${c.id}}" class='btn btn-secondary btn-sm'>Course Details</a>
-                <form action="/student-signup" method='POST' class="forms">
+                <form th:action="@{/student-signup}" method='POST' class="forms">
                     <input type="hidden" th:value="${c.id}" name="id"/>
                     <input type="submit" value="Sign Up" class='btn btn-secondary btn-sm'/>
                 </form>
