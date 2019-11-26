@@ -79,7 +79,6 @@ public class UserController {
   public String signup(Authentication a, @RequestParam("id") int course_id){
     CustomUserPrincipal p = (CustomUserPrincipal) a.getPrincipal();
     User user = p.getUser();
-
     Course course = seCourse.findCourse(course_id);
     user.addPendingCourse(course);
 
