@@ -90,11 +90,24 @@ public class Course {
     private String learning_activities;
 
     @ManyToMany
-    @JoinTable(name = "courses_students",
+    @JoinTable(name = "approved_students_teachers",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private Set<User> usersFollowing;
 
+    @ManyToMany
+    @JoinTable(name = "pending_students",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id"))
+    private Set<User> pendingStudents;
+
+    public Set<User> getPendingStudents() {
+        return pendingStudents;
+    }
+
+    public void setPendingStudents(Set<User> pendingStudents) {
+        this.pendingStudents = pendingStudents;
+    }
 
     public Set<User> getUsersFollowing() {
         return usersFollowing;

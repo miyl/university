@@ -58,6 +58,17 @@ public class User {
     @ManyToMany(mappedBy = "usersFollowing")
     private Set<Course> coursesFollowing;
 
+    @ManyToMany(mappedBy = "pendingStudents")
+    private Set<Course> coursesPending;
+
+    public Set<Course> getCoursesPending() {
+        return coursesPending;
+    }
+
+    public void setCoursesPending(Set<Course> coursesPending) {
+        this.coursesPending = coursesPending;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
