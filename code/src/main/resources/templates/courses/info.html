@@ -17,12 +17,11 @@
     <h3>Course Info</h3>
 
     <a href="/courses/list" class="btn btn-secondary btn-sm">Back</a>
-    <!-- marcus: I realize this is very messy so maybe we need to relocate this or other data elsewhere: -->
     <!-- Teacher only, only the courses she/he teaches -->
     <a th:href="@{'/courses/update/' + *{id}}" sec:authorize="hasRole('ROLE_TEACHER')" class="btn btn-secondary btn-sm">Update</a>
-    <a href="/TODO" sec:authorize="hasAnyRole('ROLE_TEACHER', 'ROLE_ADMIN')" class="btn btn-secondary btn-sm">Students/Teachers in Course</a>
+    <a href="/TODO" sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-secondary btn-sm">Students/Teachers in Course</a>
     <!-- Student/Teacher only -->
-    <a href="/users/student-signup" sec:authorize="hasRole('ROLE_STUDENT')" class="btn btn-secondary btn-sm">Sign Up</a>
+    <a href="/users/my" sec:authorize="hasRole('ROLE_STUDENT')" class="btn btn-secondary btn-sm">Sign Up</a>
     <!-- Part of CRUD, but who can do this? -->
     <form th:action="@{/courses/delete}" method='POST' sec:authorize="hasRole('ROLE_ADMIN')" class="forms">
         <input type="hidden" th:value="*{id}" name="id"/>

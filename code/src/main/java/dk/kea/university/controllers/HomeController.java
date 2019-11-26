@@ -27,16 +27,4 @@ public class HomeController {
         return "redirect:/courses/list";
     }
 
-    String prefixPath = "/home/";
-
-
-    // A list of "My" courses, ie. the courses you're in as a Student, or assigned to as a Teacher.
-    @Secured({"ROLE_STUDENT", "ROLE_TEACHER"})
-    @GetMapping("/my")
-    public String my() {
-        return prefixPath + "my";
-    }
-
-
-
 }

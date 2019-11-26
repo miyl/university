@@ -26,11 +26,6 @@ public class UserController {
 
   }
 
-  //@GetMapping("/")
-  //public String list(){
-  //  return "userList";
-  //}
-
   @Secured({"ROLE_ADMIN"})
   @GetMapping("/inCourse")
   public String usersInCourse(@PathVariable("courseId") int courseId) {
@@ -38,38 +33,8 @@ public class UserController {
     return prefixPath + "inCourse";
   }
 
-  //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
-  // @GetMapping("/add")
-  // public String add(){
-  //   return "userAdd";
-  // }
-
-  //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
-  // @PostMapping("/add")
-  // public String padd(){
-  //   return "redirect:/add";
-  // }
-
-  // @GetMapping("/update")
-  // public String update(){
-  //   return "userUpdate";
-  // }
-
-  // @PostMapping("/update")
-  // public String pupdate(){
-  //   return "redirect:/";
-  // }
-
-  // @PostMapping("/delete")
-  // public String delete(){
-  //   return "redirect:/";
-  // }
-  
-  @GetMapping("/student-signup")
-  public String signupPage(){
-    return prefixPath + "my";
-  }
-
+  // A student requests to sign up for a course. Done via the course list and possibly also info
+  // Teachers sign up while adding a course or editing one.
   @Secured({"ROLE_STUDENT"})
   @PostMapping("/student-signup")
   public String signup(Principal p, @RequestParam("id") int course_id){
@@ -81,7 +46,6 @@ public class UserController {
     return prefixPath + "signupOk";
   }
 
-  // TODO: Do we need a separate Model for these? And a template. Or don't we?
   @Secured({"ROLE_ADMIN"})
   @GetMapping("/student-signup-requests")
   public String studentSignupRequests() {
@@ -93,5 +57,13 @@ public class UserController {
   public String pstudentSignupRequests() {
     return "redirect:/student-signup-requests";
   }
+
+  // A list of "My" courses, ie. the courses you're in as a Student, or assigned to as a Teacher.
+  @Secured({"ROLE_STUDENT", "ROLE_TEACHER"})
+  @GetMapping("/my")
+  public String my() {
+      return prefixPath + "my";
+  }
+
 
 }
