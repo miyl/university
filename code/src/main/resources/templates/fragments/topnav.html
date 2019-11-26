@@ -1,51 +1,41 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="position: static;">
-    <ul class="navbar-nav">
-        <li class="nav-item" sec:authorize="hasAnyRole('ROLE_STUDENT', 'ROLE_TEACHER')">
-            <!-- Show those courses a student is signed up for or those a teacher teaches? -->
-            <a class="nav-link" href="/my">My courses</a>
-        </li>
-        <li class="nav-item">
-            <!-- Also where you sign up for following/teaching one? Also the startpage. -->
-            <a class="nav-link" href="/courses/list">Course List</a>
-        </li>
-        <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
-            <!-- Administration worker only: Approve student request to sign up for a course. -->
-            <a class="nav-link" href="/student-signup-requests">Student signup requests</a>
-        </li>
+<head>
+    <body>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="position: static;">
+            <ul class="navbar-nav">
+                <li class="nav-item" sec:authorize="hasAnyRole('ROLE_STUDENT', 'ROLE_TEACHER')">
+                    <!-- Show those courses a student is signed up for or those a teacher teaches? -->
+                    <a class="nav-link" href="/my">My courses</a>
+                </li>
+                <li class="nav-item">
+                    <!-- Also where you sign up for following/teaching one? Also the startpage. -->
+                    <a class="nav-link" href="/courses/list">Course List</a>
+                </li>
+                <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                    <!-- Administration worker only: Approve student request to sign up for a course. -->
+                    <a class="nav-link" href="/student-signup-requests">Student signup requests</a>
+                </li>
 
-        <!--
-        <li class="nav-item">
-            <a class="nav-link" href="/"></a>
-        </li>
-        -->
-        <!-- TODO: Dropdown virker ikke. Måske mangler der implementation af JS? Mangler også at tage bruger-info som navn på button -->
+                <!--
+                <li class="nav-item">
+                    <a class="nav-link" href="/"></a>
+                </li>
+                -->
+                <!-- TODO: Dropdown virker ikke. Måske mangler der implementation af JS? Mangler også at tage bruger-info som navn på button -->
 
-        <div class="dropdown show" id="status">
-            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span sec:authentication="name"></span> (<span id='role' sec:authentication="principal.authorities[0]"></span>)
-            </a>
+                <div class="dropdown show" id="status">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <span sec:authentication="name"></span> (<span id='role' sec:authentication="principal.authorities[0]"></span>)
+                    </a>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" href="#">My Courses</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="/logout">Logout</a>
-            </div>
-        </div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">My Courses</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                </div>
+            </ul>
+        </nav>
+        <!--/*/ <th:block th:include="fragments/footer.html"> </th:block> /*/-->
+    </body>
+</head>
 
-
-        <ul class="navbar-nav" id="logout">
-            <li>
-                <a class="nav-link" href="/logout">Logout</a>
-            </li>
-        </ul>
-    </ul>
-
-    <!--
-    <ul class="navbar-nav" id="logout">
-        <li>
-            <a class="nav-link" href="/logout">Logout</a>
-        </li>
-    </ul>
-    -->
-
-</nav>
