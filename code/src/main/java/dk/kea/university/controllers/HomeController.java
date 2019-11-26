@@ -29,18 +29,6 @@ public class HomeController {
 
     String prefixPath = "/home/";
 
-    // TODO: Do we need a separate Model for these? And a template. Or don't we?
-    @Secured({"ROLE_ADMIN"})
-    @GetMapping("/student-signup-requests")
-    public String studentSignupRequests() {
-        return prefixPath + "student-signup-requests";
-    }
-
-    @Secured({"ROLE_ADMIN"})
-    @PostMapping("/student-signup-requests")
-    public String pstudentSignupRequests() {
-        return "redirect:/student-signup-requests";
-    }
 
     // A list of "My" courses, ie. the courses you're in as a Student, or assigned to as a Teacher.
     @Secured({"ROLE_STUDENT", "ROLE_TEACHER"})

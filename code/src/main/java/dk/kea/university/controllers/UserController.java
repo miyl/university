@@ -85,4 +85,18 @@ public class UserController {
     seCourse.save(course);
     return pathPrefix + "signupOk";
   }
+
+  // TODO: Do we need a separate Model for these? And a template. Or don't we?
+  @Secured({"ROLE_ADMIN"})
+  @GetMapping("/student-signup-requests")
+  public String studentSignupRequests() {
+    return pathPrefix + "student-signup-requests";
+  }
+
+  @Secured({"ROLE_ADMIN"})
+  @PostMapping("/student-signup-requests")
+  public String pstudentSignupRequests() {
+    return "redirect:/student-signup-requests";
+  }
+
 }
