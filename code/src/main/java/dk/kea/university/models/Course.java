@@ -96,6 +96,14 @@ public class Course {
     private Set<User> usersFollowing;
 
 
+    public Set<User> getUsersFollowing() {
+        return usersFollowing;
+    }
+
+    public void setUsersFollowing(Set<User> usersFollowing) {
+        this.usersFollowing = usersFollowing;
+    }
+
     public int getId() {
         return id;
     }

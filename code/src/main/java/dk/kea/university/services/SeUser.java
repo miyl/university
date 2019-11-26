@@ -37,6 +37,13 @@ public class SeUser {
       }
     }
 
+    public User findUserByName(String name){
+        return reUser.findByUsername(name);
+    }
+    public void addCourseToUser(String course_id){
+
+    }
+
     // TODO: Update and Delete
 
 }
