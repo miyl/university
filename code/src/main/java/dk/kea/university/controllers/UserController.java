@@ -1,21 +1,16 @@
 package dk.kea.university.controllers;
 
 import dk.kea.university.models.Course;
-import dk.kea.university.security.CustomUserPrincipal;
+import dk.kea.university.models.User;
 import dk.kea.university.services.SeCourse;
 import dk.kea.university.services.SeUser;
-import dk.kea.university.models.User;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.ui.Model;
-import java.lang.Iterable;
+
 import java.security.Principal;
 
 // Security
-import org.springframework.security.access.annotation.Secured;
 
 @Controller
 @RequestMapping("users")

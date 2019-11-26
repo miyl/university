@@ -26,67 +26,67 @@ public class Course {
     private int id;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private String name_da;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private String name_en;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private int semester;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private String class_code;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private String study_programme;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private String mandatory_or_elective;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private int ects;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private String course_language;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private int min_students;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private int max_students;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private int expected_students;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private String prerequisites;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private String learning_outcome;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private String content;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private String exam_form;
 
     @Column(nullable = false)
-    @NotBlank
+    //@NotBlank
     private String learning_activities;
 
     @ManyToMany
@@ -100,22 +100,6 @@ public class Course {
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private Set<User> pendingStudents;
-
-    public Set<User> getPendingStudents() {
-        return pendingStudents;
-    }
-
-    public void setPendingStudents(User user) {
-        this.pendingStudents.add(user);
-    }
-
-    public Set<User> getUsersFollowing() {
-        return usersFollowing;
-    }
-
-    public void setUsersFollowing(Set<User> usersFollowing) {
-        this.usersFollowing = usersFollowing;
-    }
 
     public int getId() {
         return id;
@@ -245,11 +229,39 @@ public class Course {
         this.exam_form = exam_form;
     }
 
-    public String getLearning_activities() { return learning_activities; }
+    public String getLearning_activities() {
+        return learning_activities;
+    }
 
-    public void setLearning_activities(String learning_activities) { this.learning_activities = learning_activities; }
+    public void setLearning_activities(String learning_activities) {
+        this.learning_activities = learning_activities;
+    }
 
-    // Needed because they're sometimes stored in a Set
+    public Set<User> getUsersFollowing() {
+        return usersFollowing;
+    }
+
+    public void setUsersFollowing(Set<User> usersFollowing) {
+        this.usersFollowing = usersFollowing;
+    }
+
+    public Set<User> getPendingStudents() {
+        return pendingStudents;
+    }
+
+    public void setPendingStudents(User user) {
+        this.pendingStudents.add(user);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Course course = (Course) o;
+        return Objects.equals(id, course.id);
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(id);
     }

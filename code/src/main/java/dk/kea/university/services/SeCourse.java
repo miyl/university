@@ -2,12 +2,9 @@ package dk.kea.university.services;
 
 import dk.kea.university.models.Course;
 import dk.kea.university.repositories.ReCourse;
-
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional; // Not used yet but may prove relevant
+import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.Iterable;
-//import java.util.List;
 import java.util.Optional;
 
 @Service
