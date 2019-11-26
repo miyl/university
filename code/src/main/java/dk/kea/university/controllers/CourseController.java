@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.Authentication;
 
-
 @Controller
 @RequestMapping("courses")
 public class CourseController {
@@ -64,8 +63,8 @@ public class CourseController {
 
     @Secured({"ROLE_TEACHER"})
     @PostMapping("/update")
-    public String pupdate(@RequestParam("id") int id) {
-        seCourse.update(id);
+    public String pupdate(@RequestParam("id") int id, @ModelAttribute Course course) {
+        seCourse.updateCourse(id, course);
         return "redirect:/courses/info/" + id;
     }
 
