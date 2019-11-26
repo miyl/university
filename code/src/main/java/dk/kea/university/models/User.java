@@ -60,7 +60,7 @@ public class User {
 
     @ManyToMany(mappedBy = "pendingStudents")
     private Set<Course> coursesPending;
-    
+
     public Set<Course> getCoursesPending() {
         return coursesPending;
     }
