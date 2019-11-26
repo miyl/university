@@ -5,8 +5,6 @@ import dk.kea.university.repositories.ReUser;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional; // Not used yet but may prove relevant
-import java.lang.Iterable; // why is this in Lang when List is in java.util?
-// import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -42,7 +40,4 @@ public class SeUser {
     public void save(User user){
         reUser.save(user);
     }
-
-    // TODO: Update and Delete
-
 }

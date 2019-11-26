@@ -4,11 +4,18 @@ import dk.kea.university.models.Course;
 import dk.kea.university.models.User;
 import dk.kea.university.services.SeCourse;
 import dk.kea.university.services.SeUser;
+import dk.kea.university.security.CustomUserPrincipal;
+
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.ui.Model;
 
 import java.security.Principal;
+import org.springframework.security.core.Authentication;
+
+import java.util.Set;
+import java.util.HashSet;
 
 // Security
 
@@ -61,8 +68,23 @@ public class UserController {
   // A list of "My" courses, ie. the courses you're in as a Student, or assigned to as a Teacher.
   @Secured({"ROLE_STUDENT", "ROLE_TEACHER"})
   @GetMapping("/my")
-  public String my() {
-      return prefixPath + "my";
+  public String my(Authentication a, Model m) {
+    CustomUserPrincipal p = (CustomUserPrincipal) a.getPrincipal();
+    User currentUser = p.getUser();
+    Iterable<Course>allCourses = seCourse.list();
+    Set<Course>myCourses = new HashSet<>();
+
+    for (var c : allCourses) {
+      for (var u : c.getUsersFollowing()) {
+        if (currentUser.equals(u)) {
+          myCourses.add(c);
+          break;
+        }
+      }
+    }
+    m.addAttribute("myCourses", myCourses);
+
+    return prefixPath + "my";
   }
 
 
