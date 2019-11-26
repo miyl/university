@@ -61,6 +61,10 @@ public class User {
     @ManyToMany(mappedBy = "pendingStudents")
     private Set<Course> coursesPending;
 
+    public void addPendingCourse(Course course){
+        coursesPending.add(course);
+    }
+
     public Set<Course> getCoursesPending() {
         return coursesPending;
     }
