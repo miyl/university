@@ -23,7 +23,7 @@ public class UserController {
 
   private final SeUser seUser;
   private final SeCourse seCourse;
-  String pathPrefix="users/";
+  String prefixPath="users/";
 
   public UserController(SeUser seUser, SeCourse seCourse) {
     this.seUser = seUser;
@@ -40,7 +40,7 @@ public class UserController {
   @GetMapping("/inCourse")
   public String usersInCourse(@PathVariable("courseId") int courseId) {
     //Iterable<User> usersInCourse = seUser.getUsersInCourse();
-    return pathPrefix + "inCourse";
+    return prefixPath + "inCourse";
   }
 
   //@Secured({"ROLE_TEACHER","ROLE_ADMIN"})
@@ -72,7 +72,7 @@ public class UserController {
   
   @GetMapping("/student-signup")
   public String signupPage(){
-    return pathPrefix + "my";
+    return prefixPath + "my";
   }
 
   @Secured({"ROLE_STUDENT"})
@@ -83,14 +83,14 @@ public class UserController {
     Course course = seCourse.findCourse(course_id);
     course.setPendingStudents(user);
     seCourse.save(course);
-    return pathPrefix + "signupOk";
+    return prefixPath + "signupOk";
   }
 
   // TODO: Do we need a separate Model for these? And a template. Or don't we?
   @Secured({"ROLE_ADMIN"})
   @GetMapping("/student-signup-requests")
   public String studentSignupRequests() {
-    return pathPrefix + "student-signup-requests";
+    return prefixPath + "student-signup-requests";
   }
 
   @Secured({"ROLE_ADMIN"})
