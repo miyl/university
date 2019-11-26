@@ -36,12 +36,11 @@ public class SeUser {
         throw new IllegalArgumentException("No course with id: " + id);
       }
     }
-
     public User findUserByName(String name){
         return reUser.findByUsername(name);
     }
-    public void addCourseToUser(String course_id){
-
+    public void save(User user){
+        reUser.save(user);
     }
 
     // TODO: Update and Delete

@@ -60,17 +60,13 @@ public class User {
 
     @ManyToMany(mappedBy = "pendingStudents")
     private Set<Course> coursesPending;
-
-    public void addPendingCourse(Course course){
-        coursesPending.add(course);
-    }
-
+    
     public Set<Course> getCoursesPending() {
         return coursesPending;
     }
 
-    public void setCoursesPending(Set<Course> coursesPending) {
-        this.coursesPending = coursesPending;
+    public void setCoursesPending(Course course) {
+        this.coursesPending.add(course);
     }
 
     public void setId(Long id) {

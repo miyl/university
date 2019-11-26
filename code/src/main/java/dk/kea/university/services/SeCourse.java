@@ -47,5 +47,8 @@ public class SeCourse {
         //Sletter eksisterende produkt
         reCourse.deleteById(id);
     }
+    public void save(Course course){
+        reCourse.save(course);
+    }
 
 }

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import java.lang.Iterable;
+import java.security.Principal;
 
 // Security
 import org.springframework.security.access.annotation.Secured;
@@ -76,12 +77,12 @@ public class UserController {
 
   @Secured({"ROLE_STUDENT"})
   @PostMapping("/student-signup")
-  public String signup(Authentication a, @RequestParam("id") int course_id){
-    CustomUserPrincipal p = (CustomUserPrincipal) a.getPrincipal();
-    User user = p.getUser();
-    Course course = seCourse.findCourse(course_id);
-    user.addPendingCourse(course);
+  public String signup(Principal p, @RequestParam("id") int course_id){
 
+    User user = seUser.findUserByName(p.getName());
+    Course course = seCourse.findCourse(course_id);
+    course.setPendingStudents(user);
+    seCourse.save(course);
     return pathPrefix + "signupOk";
   }
 }

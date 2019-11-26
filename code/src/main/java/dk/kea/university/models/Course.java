@@ -105,8 +105,8 @@ public class Course {
         return pendingStudents;
     }
 
-    public void setPendingStudents(Set<User> pendingStudents) {
-        this.pendingStudents = pendingStudents;
+    public void setPendingStudents(User user) {
+        this.pendingStudents.add(user);
     }
 
     public Set<User> getUsersFollowing() {
