@@ -1,13 +1,15 @@
 package dk.kea.university.controllers;
 
+import dk.kea.university.models.Course;
+import dk.kea.university.security.CustomUserPrincipal;
+import dk.kea.university.services.SeCourse;
 import dk.kea.university.services.SeUser;
 import dk.kea.university.models.User;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 import java.lang.Iterable;
 
@@ -19,10 +21,13 @@ import org.springframework.security.access.annotation.Secured;
 public class UserController {
 
   private final SeUser seUser;
+  private final SeCourse seCourse;
   String pathPrefix="users/";
 
-  public UserController(SeUser seUser) {
+  public UserController(SeUser seUser, SeCourse seCourse) {
     this.seUser = seUser;
+    this.seCourse = seCourse;
+
   }
 
   //@GetMapping("/")
@@ -63,5 +68,21 @@ public class UserController {
   // public String delete(){
   //   return "redirect:/";
   // }
+  
+  @GetMapping("/student-signup")
+  public String signupPage(){
+    return pathPrefix + "my";
+  }
 
+  @Secured({"ROLE_STUDENT"})
+  @PostMapping("/student-signup")
+  public String signup(Authentication a, @RequestParam("id") int course_id){
+    CustomUserPrincipal p = (CustomUserPrincipal) a.getPrincipal();
+    User user = p.getUser();
+
+    Course course = seCourse.findCourse(course_id);
+    user.addPendingCourse(course);
+
+    return pathPrefix + "signupOk";
+  }
 }

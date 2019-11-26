@@ -1,8 +1,13 @@
 package dk.kea.university.controllers;
 
+import dk.kea.university.models.Course;
+import dk.kea.university.security.CustomUserPrincipal;
+import dk.kea.university.services.SeCourse;
 import dk.kea.university.services.SeUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
+import dk.kea.university.models.User;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -45,24 +50,5 @@ public class HomeController {
     }
 
 
-    @Autowired
-    SeUser seUser;
-
-    @GetMapping("/student-signup")
-    public String signupPage(){
-        return prefixPath + "my";
-    }
-
-    @Secured({"ROLE_STUDENT"})
-    @PostMapping("/student-signup")
-    public String signup(Principal p, @RequestParam("id") int course_id){
-        //udskriv course id
-        System.out.println("id: " + course_id);
-        //udskriv username på bruger der er logget ind
-        System.out.println("principalname: " + p.getName());
-        System.out.println("id of principal: " + seUser.findUserByName(p.getName()).getId());
-
-        return prefixPath + "signupOk";
-    }
 
 }
