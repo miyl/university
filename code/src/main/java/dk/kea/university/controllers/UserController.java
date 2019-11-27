@@ -58,16 +58,19 @@ public class UserController {
   @Secured({"ROLE_ADMIN"})
   @GetMapping("/student-signup-requests")
   public String studentSignupRequests(Model m) {
-    List<User> pendingList = new ArrayList<>();
+    List<User> pendingUserList = new ArrayList<>();
+    List<Course> pendingCourseList = new ArrayList<>();
+
     Iterable<Course> allCourses = seCourse.list();
     for(Course c : allCourses){
       Set<User> userPendingList = c.getPendingStudents();
       for(User u : userPendingList){
-        pendingList.add(u);
-        System.out.println("Added: " +  u.toString());
+        pendingUserList.add(u);
+        pendingCourseList.add(c);
       }
     }
-    m.addAttribute(pendingList);
+    m.addAttribute(pendingCourseList);
+    m.addAttribute(pendingUserList);
     return prefixPath + "student-signup-requests";
   }
 
