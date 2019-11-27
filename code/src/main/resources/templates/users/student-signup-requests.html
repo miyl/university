@@ -46,11 +46,14 @@
             <td th:text="${userCourse.user.username}"> </td>
             <td th:text="${userCourse.course.id}"> </td>
             <td th:text="${userCourse.course.name_en}"> </td>
+            <td>
+                <a th:href="@{'users/student-signup-requests'}"></a>
+            </td>
+
         </tr>
 
       </tbody>
   </table>
-
-
+  <!--/*/ <th:block th:include="fragments/footer.html"> </th:block> /*/-->
 </body>
 </html>
