@@ -38,16 +38,16 @@
       </tr>
       </thead>
       <tbody>
-        <span th:each="user : ${userList}">
-                <tr th:each="course : ${courseList}">
-                    <td th:text="${user.id}"></td>
-                    <td th:text="${user.first_name}"> </td>
-                    <td th:text="${user.last_name}"> </td>
-                    <td th:text="${user.username}"> </td>
-                    <td th:text="${course.id}"> </td>
-                    <td th:text="${course.name_en}"> </td>
-                </tr>
-        </span>
+
+        <tr th:each="userCourse : ${userCourseList}">
+            <td th:text="${userCourse.user.id}"></td>
+            <td th:text="${userCourse.user.first_name}"> </td>
+            <td th:text="${userCourse.user.last_name}"> </td>
+            <td th:text="${userCourse.user.username}"> </td>
+            <td th:text="${userCourse.course.id}"> </td>
+            <td th:text="${userCourse.course.name_en}"> </td>
+        </tr>
+
       </tbody>
   </table>
 

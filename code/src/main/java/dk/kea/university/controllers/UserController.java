@@ -2,6 +2,7 @@ package dk.kea.university.controllers;
 
 import dk.kea.university.models.Course;
 import dk.kea.university.models.User;
+import dk.kea.university.models.UserCourse;
 import dk.kea.university.services.SeCourse;
 import dk.kea.university.services.SeUser;
 import dk.kea.university.security.CustomUserPrincipal;
@@ -58,19 +59,15 @@ public class UserController {
   @Secured({"ROLE_ADMIN"})
   @GetMapping("/student-signup-requests")
   public String studentSignupRequests(Model m) {
-    List<User> pendingUserList = new ArrayList<>();
-    List<Course> pendingCourseList = new ArrayList<>();
-
+    Set<UserCourse> userCourseList = new HashSet<>();
     Iterable<Course> allCourses = seCourse.list();
     for(Course c : allCourses){
       Set<User> userPendingList = c.getPendingStudents();
       for(User u : userPendingList){
-        pendingUserList.add(u);
-        pendingCourseList.add(c);
+        userCourseList.add(new UserCourse(u, c));
       }
     }
-    m.addAttribute("courseList", pendingCourseList);
-    m.addAttribute("userList", pendingUserList);
+    m.addAttribute("userCourseList", userCourseList);
     return prefixPath + "student-signup-requests";
   }
 
