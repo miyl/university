@@ -1,5 +1,7 @@
 package dk.kea.university.models;
 
+import dk.kea.university.swagger.SwaggerCourse;
+
 import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
@@ -100,6 +102,22 @@ public class Course {
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
     private Set<User> pendingStudents;
+
+    public Course() {}
+
+    public Course(SwaggerCourse s) {
+      Course c = new Course();
+      ects = Integer.parseInt( s.getEcts() );
+      content = s.getDescription();
+      id = s.getId();
+      course_language = s.getLanguage();
+      mandatory_or_elective = (s.isMandatory())? "mandatory" : "elective";
+      name_en = s.getName();
+      name_da = s.getNamedanish();
+      //getNumberOfTeachers(); // TODO: This cannot really be translated. We could only fx. create empty teachers?!
+      semester = s.getSemester();
+      study_programme = s.getStudyprogramme();
+    }
 
     public int getId() {
         return id;

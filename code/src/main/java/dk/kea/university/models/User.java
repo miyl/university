@@ -22,7 +22,7 @@ import java.util.Set;
 public class User {
 
     // START: Spring Security related
-    // NOTE: Spring Security counts on this particular order of fields (id, username, password) in the database for password authentication, like wtf!:
+    // NOTE: Spring Security counts on THIS PARTICULAR ORDER of fields (id, username, password) in the database for password authentication, like wtf!:
     // https://stackoverflow.com/questions/54448451/spring-security-cannot-determine-value-type-from-string-admin
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
