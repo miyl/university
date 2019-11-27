@@ -69,8 +69,8 @@ public class UserController {
         pendingCourseList.add(c);
       }
     }
-    m.addAttribute(pendingCourseList);
-    m.addAttribute(pendingUserList);
+    m.addAttribute("courseList", pendingCourseList);
+    m.addAttribute("userList", pendingUserList);
     return prefixPath + "student-signup-requests";
   }
 
