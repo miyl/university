@@ -42,6 +42,7 @@
             <td th:text="${c.ects}"></td>
             <td>
                 <a th:href="@{'/courses/info/' + ${c.id}}" class='btn btn-secondary btn-sm'>Details</a>
+                <a th:href="@{'/courses/update/' + ${c.id}}" sec:authorize="hasRole('ROLE_TEACHER')" class="btn btn-secondary btn-sm">Update</a>
                 <form th:action="@{/users/student-signup}" method='POST' sec:authorize="hasRole('ROLE_STUDENT')" class="forms">
                     <input type="hidden" th:value="${c.id}" name="id"/>
                     <input type="submit" value="Sign Up" class='btn btn-secondary btn-sm'/>
