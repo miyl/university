@@ -2,6 +2,8 @@ package dk.kea.university.swagger;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.Objects;
+
 // If the server sends any JSON values not represented in this model, ignore them
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SwaggerCourse {
@@ -17,6 +19,8 @@ public class SwaggerCourse {
   private int numberOfTeachers;
   private int semester;
   private String studyprogramme;
+
+  public SwaggerCourse() {}
 
   public SwaggerCourse(String description, String ects, int id, String language, boolean mandatory, String name, String namedanish, int numberOfTeachers, int semester, String studyprogramme) {
     this.description = description;
@@ -111,4 +115,32 @@ public class SwaggerCourse {
     this.studyprogramme = studyprogramme;
   }
 
+  @Override
+  public String toString() {
+    return "SwaggerCourse{" +
+            "description='" + description + '\'' +
+            ", ects='" + ects + '\'' +
+            ", id=" + id +
+            ", language='" + language + '\'' +
+            ", mandatory=" + mandatory +
+            ", name='" + name + '\'' +
+            ", namedanish='" + namedanish + '\'' +
+            ", numberOfTeachers=" + numberOfTeachers +
+            ", semester=" + semester +
+            ", studyprogramme='" + studyprogramme + '\'' +
+            '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    SwaggerCourse that = (SwaggerCourse) o;
+    return id == that.id;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
 }

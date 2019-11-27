@@ -2,6 +2,8 @@ package dk.kea.university.controllers;
 
 import dk.kea.university.models.Course;
 import dk.kea.university.services.SeCourse;
+import dk.kea.university.swagger.SeSwagger;
+
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,9 +18,11 @@ import org.springframework.security.core.Authentication;
 public class CourseController {
 
     private final SeCourse seCourse;
+    private final SeSwagger seSwagger;
 
-    public CourseController(SeCourse seCourse) {
-        this.seCourse = seCourse;
+    public CourseController(SeCourse c, SeSwagger s) {
+        this.seCourse = c;
+        this.seSwagger = s;
     }
 
     String pathPrefix = "/courses/";
@@ -73,6 +77,13 @@ public class CourseController {
     public String delete(@RequestParam("id") int id) {
         seCourse.delete(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/swagger-test")
+    public String swaggerTest() {
+        seSwagger.listAll();
+        // Returning some random template for now. Just run for its console output
+        return pathPrefix + "add";
     }
 
 }

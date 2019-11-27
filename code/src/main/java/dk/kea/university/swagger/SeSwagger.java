@@ -26,9 +26,15 @@ public class SeSwagger {
   public List<Course> listAll() {
     ResponseEntity<SwaggerCourse[]> response = restTemplate.getForEntity(swaggerBaseUrl + "/course", SwaggerCourse[].class);
     // TODO: Create Course list from the SwaggerCourse list here. Put the conversion in a method so findCourseById can use it too?
-    //List<SwaggerCourse> scs =
-    //response.getBody();
-    return new ArrayList<Course>();
+    List<Course> cs = new ArrayList<Course>();
+
+    for (var sc : response.getBody()) {
+      // Course c = new Course();
+      // c.setName_da(); ...and so forth
+      System.out.println(sc);
+    }
+
+    return cs;
   }
 
   // Will return a Course object with only some fields set, ie. those found on Swagger. Should we use a custom model for this?

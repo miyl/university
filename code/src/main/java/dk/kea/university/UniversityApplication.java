@@ -11,7 +11,6 @@ public class UniversityApplication {
         // System.out.println( "BCrypt:" );
         // System.out.println( new org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder().encode("p") );
         SpringApplication.run(UniversityApplication.class, args);
-        System.out.println("TEST LOGINS ARE NOW IN THE DB!:");
         System.out.println("Student: max");
         System.out.println("Teacher: eve");
         System.out.println("Teacher: neve");
