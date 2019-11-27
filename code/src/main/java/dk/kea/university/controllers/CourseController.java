@@ -51,7 +51,6 @@ public class CourseController {
     @GetMapping("/add")
     public String add(Model model) {
         model.addAttribute("teachers", seUser.teachers());
-
         return pathPrefix + "add";
     }
 
