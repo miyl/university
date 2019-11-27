@@ -53,8 +53,8 @@ public class CourseController {
     @Secured({"ROLE_TEACHER"})
     @PostMapping("/add")
     public String padd(@ModelAttribute Course course) {
-        seCourse.add(course);
-        return "redirect:/";
+        int id = seCourse.add(course);
+        return "redirect:" + pathPrefix + "info/" + id;
     }
 
     // Should probably take a specific course as input? You get here by clicking edit on a specific on a course in the list you're responsible for as a teacher (there can be multiple)

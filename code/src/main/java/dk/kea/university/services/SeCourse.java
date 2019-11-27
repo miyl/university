@@ -17,8 +17,8 @@ public class SeCourse {
         this.reCourse = reCourse;
     }
 
-    public int add(Course c) {
-        Course saved = reCourse.save(c);
+    public int add(Course course) {
+        Course saved = reCourse.save(course);
         return saved.getId();
     }
 
