@@ -1,8 +1,11 @@
 package dk.kea.university.swagger;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import dk.kea.university.models.User;
+import dk.kea.university.models.Course;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 // If the server sends any JSON values not represented in this model, ignore them
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -33,6 +36,20 @@ public class SwaggerCourse {
     this.numberOfTeachers = numberOfTeachers;
     this.semester = semester;
     this.studyprogramme = studyprogramme;
+  }
+
+  // Easily create a SwaggerCourse from a Course - and vice versa in the Course model
+  public SwaggerCourse(Course c) {
+    this.description = c.getContent(); // Not sure what the Swagger documented API's description should map to in our model?
+    this.ects =  String.valueOf( c.getEcts() ); // Swaggers ects is a String for some reason
+    this.id = c.getId();
+    this.language = c.getCourse_language();
+    this.mandatory = ( c.getMandatory_or_elective().equals("mandatory") )? true : false;
+    this.name = c.getName_en();
+    this.namedanish = c.getName_da();
+    this.numberOfTeachers = c.getUsersFollowing().stream().filter(u -> u.getRole().name().equals("ROLE_TEACHER")).collect(Collectors.toList()).size();
+    this.semester = c.getSemester();
+    this.studyprogramme = c.getStudy_programme();
   }
 
   public String getDescription() {

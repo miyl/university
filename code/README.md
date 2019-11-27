@@ -3,11 +3,11 @@
 ## TODO
 
 - Own API for JQuery/JS
-- JQuery dynamic updates 
-- Third party API integration
-- Create + Update on courses. In add you need to be able to add any teachers
-- My courses
-- Student signup requests
+- JQuery dynamic updates
+- Third party API integration: In progress
+- Ingegrate adding teachers to Course in add/update
+- My courses:
+- Student signup: make request via ajax and report back that status is pending
 
 ## Database
 
