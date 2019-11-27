@@ -47,17 +47,17 @@
             <td th:text="${userCourse.course.id}"> </td>
             <td th:text="${userCourse.course.name_en}"> </td>
             <td>
-                <form th:action="@{'/users/student-signup-requests'}" method="POST">
+                <form th:action="@{'/users/student-signup-requests'}" method="POST" class="forms">
                     <input type="hidden" name="user_id" th:value="${userCourse.user.id}">
                     <input type="hidden" name="course_id" th:value="${userCourse.course.id}">
                     <input type="hidden" name="approvedeny" th:value="approve">
-                    <button type="submit">Approve</button>
+                    <button type="submit" class="btn btn-secondary btn-sm">Approve</button>
                 </form>
-                <form th:action="@{'/users/student-signup-requests'}" method="POST">
+                <form th:action="@{'/users/student-signup-requests'}" method="POST" class="forms">
                     <input type="hidden" name="user_id" th:value="${userCourse.user.id}">
                     <input type="hidden" name="course_id" th:value="${userCourse.course.id}">
                     <input type="hidden" name="approvedeny" th:value="deny">
-                    <button type="submit">Deny</button>
+                    <button type="submit" class="btn btn-secondary btn-sm">Deny</button>
                 </form>
             </td>
 
