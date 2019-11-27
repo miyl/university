@@ -8,7 +8,7 @@
                 </li>
                 <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
                     <!-- Administration worker only: Approve student request to sign up for a course. -->
-                    <a class="nav-link" href="/users/student-signup-requests">Student signup requests</a>
+                    <!--<a class="nav-link" href="/users/student-signup-requests">Student signup requests</a>-->
                 </li>
 
                 <div class="dropdown show" id="status">
@@ -19,6 +19,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <!-- Show those courses a student is signed up for or those a teacher teaches? -->
                         <a class="dropdown-item" sec:authorize="hasAnyRole('ROLE_STUDENT', 'ROLE_TEACHER')" href="/users/my">My Courses</a>
+                        <a class="dropdown-item" sec:authorize="hasRole('ROLE_ADMIN')" href="/users/student-signup-requests">Student Signup Requests</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="/logout">Logout</a>
                     </div>
