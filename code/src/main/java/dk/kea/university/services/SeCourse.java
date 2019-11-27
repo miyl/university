@@ -3,7 +3,6 @@ package dk.kea.university.services;
 import dk.kea.university.models.Course;
 import dk.kea.university.repositories.ReCourse;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -17,8 +16,8 @@ public class SeCourse {
         this.reCourse = reCourse;
     }
 
-    public int add(Course course) {
-        Course saved = reCourse.save(course);
+    public int add(Course c) {
+        Course saved = reCourse.save(c);
         return saved.getId();
     }
 

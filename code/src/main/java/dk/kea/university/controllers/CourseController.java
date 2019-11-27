@@ -2,6 +2,7 @@ package dk.kea.university.controllers;
 
 import dk.kea.university.models.Course;
 import dk.kea.university.services.SeCourse;
+import dk.kea.university.services.SeUser;
 import dk.kea.university.swagger.SeSwagger;
 
 import org.springframework.security.access.annotation.Secured;
@@ -18,11 +19,13 @@ import org.springframework.security.core.Authentication;
 public class CourseController {
 
     private final SeCourse seCourse;
+    private final SeUser seUser;
     private final SeSwagger seSwagger;
 
-    public CourseController(SeCourse c, SeSwagger s) {
+    public CourseController(SeCourse c, SeSwagger s, SeUser u) {
         this.seCourse = c;
         this.seSwagger = s;
+        this.seUser = u;
     }
 
     String pathPrefix = "/courses/";
@@ -32,7 +35,7 @@ public class CourseController {
     // One can get a Principal directly from Spring automatically, but it seems to not be our home grown CustomUserPrincipal and thus it doesn't contain all the data we need.
     @GetMapping("/list")
     public String list(Model m) {
-
+        m.addAttribute("teachers", seUser.teachers());
         m.addAttribute("courses", seCourse.list());
         return pathPrefix + "list";
     }
@@ -47,6 +50,7 @@ public class CourseController {
     @Secured({"ROLE_TEACHER"})
     @GetMapping("/add")
     public String add() {
+
         return pathPrefix + "add";
     }
 
