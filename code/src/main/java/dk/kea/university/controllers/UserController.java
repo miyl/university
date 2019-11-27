@@ -51,7 +51,7 @@ public class UserController {
 
     User user = seUser.findUserByName(p.getName());
     Course course = seCourse.findCourse(course_id);
-    course.setPendingStudents(user);
+    course.addPendingStudent(user);
     seCourse.save(course);
     return prefixPath + "signupOk";
   }
@@ -73,8 +73,21 @@ public class UserController {
 
   @Secured({"ROLE_ADMIN"})
   @PostMapping("/student-signup-requests")
-  public String pstudentSignupRequests() {
-    System.out.println("Postmap works");
+  public String pstudentSignupRequests(@RequestParam("user_id") int user_id, @RequestParam("course_id") int course_id, @RequestParam("approvedeny") String approveOrdeny) {
+    Course course = seCourse.findCourse(course_id);
+    User user = seUser.findUser(user_id);
+    //remove from pendinglist
+    course.removePendingStudent(user);
+
+    //if approve add to student to course
+    if(approveOrdeny.equals("approve")){
+      course.addStudent(user);
+      seCourse.save(course);
+    }
+    //else
+    else {
+      //do something
+    }
     return "redirect:/" + prefixPath + "student-signup-requests";
   }
 

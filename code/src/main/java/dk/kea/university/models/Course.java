@@ -249,8 +249,20 @@ public class Course {
         return pendingStudents;
     }
 
-    public void setPendingStudents(User user) {
+    public void setPendingStudents(Set<User> pendingStudents) {
+        this.pendingStudents = pendingStudents;
+    }
+
+    public void addPendingStudent(User user) {
         this.pendingStudents.add(user);
+    }
+
+    public void removePendingStudent(User user){
+        this.pendingStudents.remove(user);
+    }
+
+    public void addStudent(User user){
+        this.usersFollowing.add(user);
     }
 
     @Override
