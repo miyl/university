@@ -92,7 +92,7 @@ public class Course {
     @ManyToMany
     @JoinTable(name = "approved_students_teachers",
             joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "student_id"))
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private Set<User> usersFollowing;
 
     @ManyToMany

@@ -145,6 +145,11 @@ public class User {
         coursesFollowing = cf;
     }
 
+    public boolean equals(Object o) {
+        if (o instanceof User) return this.getId() == ((User) o).getId();
+        else return false;
+    }
+
     // Needed because they're sometimes stored in a Set
     public int hashCode() {
         return Objects.hash(id);
