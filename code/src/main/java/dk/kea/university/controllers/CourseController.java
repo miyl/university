@@ -19,8 +19,8 @@ import org.springframework.security.core.Authentication;
 public class CourseController {
 
     private final SeCourse seCourse;
-    private final SeUser seUser;
     private final SeSwagger seSwagger;
+    private final SeUser seUser;
 
     public CourseController(SeCourse c, SeSwagger s, SeUser u) {
         this.seCourse = c;
@@ -35,7 +35,7 @@ public class CourseController {
     // One can get a Principal directly from Spring automatically, but it seems to not be our home grown CustomUserPrincipal and thus it doesn't contain all the data we need.
     @GetMapping("/list")
     public String list(Model m) {
-        m.addAttribute("teachers", seUser.teachers());
+
         m.addAttribute("courses", seCourse.list());
         return pathPrefix + "list";
     }
@@ -49,7 +49,8 @@ public class CourseController {
     // These roles must match the ones specified in SecurityConfig.java if using those users or the ones assigned in the database if using a custom User class
     @Secured({"ROLE_TEACHER"})
     @GetMapping("/add")
-    public String add() {
+    public String add(Model model) {
+        model.addAttribute("teachers", seUser.teachers());
 
         return pathPrefix + "add";
     }
