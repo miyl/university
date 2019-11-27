@@ -74,7 +74,8 @@ public class UserController {
   @Secured({"ROLE_ADMIN"})
   @PostMapping("/student-signup-requests")
   public String pstudentSignupRequests() {
-    return "redirect:/student-signup-requests";
+    System.out.println("Postmap works");
+    return "redirect:/" + prefixPath + "student-signup-requests";
   }
 
   // A list of "My" courses, ie. the courses you're in as a Student, or assigned to as a Teacher.

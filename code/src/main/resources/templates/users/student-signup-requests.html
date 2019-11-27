@@ -3,7 +3,7 @@
 
 <head>
     <!--/*/ <th:block th:include="fragments/header.html"> </th:block> /*/-->
-    <title>Title</title>
+    <title>Student signup requests</title>
 </head>
 
 <body>
@@ -47,7 +47,18 @@
             <td th:text="${userCourse.course.id}"> </td>
             <td th:text="${userCourse.course.name_en}"> </td>
             <td>
-                <a th:href="@{'users/student-signup-requests'}"></a>
+                <form th:action="@{'/users/student-signup-requests'}" method="POST">
+                    <input type="hidden" name="user_id" value="${userCourse.user.id}}">
+                    <input type="hidden" name="course_id" value="${userCourse.course.id}">
+                    <input type="hidden" name="approve" value="approve">
+                    <button type="submit">Approve</button>
+                </form>
+                <form th:action="@{'/users/student-signup-requests'}" method="POST">
+                    <input type="hidden" name="user_id" value="${userCourse.user.id}}">
+                    <input type="hidden" name="course_id" value="${userCourse.course.id}">
+                    <input type="hidden" name="deny" value="deny">
+                    <button type="submit">Deny</button>
+                </form>
             </td>
 
         </tr>
