@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import java.security.Principal;
 import org.springframework.security.core.Authentication;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -55,7 +57,17 @@ public class UserController {
 
   @Secured({"ROLE_ADMIN"})
   @GetMapping("/student-signup-requests")
-  public String studentSignupRequests() {
+  public String studentSignupRequests(Model m) {
+    List<User> pendingList = new ArrayList<>();
+    Iterable<Course> allCourses = seCourse.list();
+    for(Course c : allCourses){
+      Set<User> userPendingList = c.getPendingStudents();
+      for(User u : userPendingList){
+        pendingList.add(u);
+        System.out.println("Added: " +  u.toString());
+      }
+    }
+    m.addAttribute(pendingList);
     return prefixPath + "student-signup-requests";
   }
 
