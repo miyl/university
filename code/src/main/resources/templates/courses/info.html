@@ -19,7 +19,8 @@
     <a href="/courses/list" class="btn btn-secondary btn-sm">Back</a>
     <!-- Teacher only, only the courses she/he teaches -->
     <a th:href="@{'/courses/update/' + *{id}}" sec:authorize="hasRole('ROLE_TEACHER')" class="btn btn-secondary btn-sm">Update</a>
-    <a href="/TODO" sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-secondary btn-sm">Students/Teachers in Course</a>
+    <a href="/TODO" sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-secondary btn-sm">Students/Teachers in
+        Course</a>
 
     <form th:action="@{/users/student-signup}" method='POST' sec:authorize="hasRole('ROLE_STUDENT')" class="forms">
         <input type="hidden" th:value="*{id}" name="id"/>
@@ -106,17 +107,17 @@
         <tr>
             <th class="font-weight-bol">Teachers</th>
             <td class="font-weight-light">
-              <span th:each="u : ${course.usersFollowing}">
-                <span th:if="${u.role.name() == 'ROLE_TEACHER'}">
-                  <span th:text="${u.first_name} + ' ' + ${u.last_name} + ','"></span>
-                </span>
-              </span>
+                <div th:each="u : ${course.usersFollowing}">
+                    <span th:if="${u.role.name() == 'ROLE_TEACHER'}">
+                        <span th:text="${u.first_name} + ' ' + ${u.last_name}"></span>
+                    </span>
+                </div>
             </td>
         </tr>
 
     </table>
 
 </div>
-    <!--/*/ <th:block th:include="fragments/footer.html"> </th:block> /*/-->
+<!--/*/ <th:block th:include="fragments/footer.html"> </th:block> /*/-->
 </body>
 </html>
