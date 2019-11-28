@@ -78,16 +78,11 @@ public class UserController {
     User user = seUser.findUser(user_id);
     //remove from pendinglist
     course.removePendingStudent(user);
-
     //if approve add to student to course
     if(approveOrdeny.equals("approve")){
       course.addStudent(user);
-      seCourse.save(course);
     }
-    //else
-    else {
-      seCourse.save(course);
-    }
+    seCourse.save(course);
     return "redirect:/" + prefixPath + "student-signup-requests";
   }
 
