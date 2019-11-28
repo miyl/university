@@ -117,8 +117,9 @@
             <th class="font-weight-bol">Teachers</th>
             <td class="font-weight-light">
                 <div th:each="t : ${teachers}">
-                    <input type="checkbox" th:name="${t.id}" th:value="${t.id}"/>
+                    <input type="checkbox" th:name="approved_students_teachers" th:value="${t.id}"/>
                     <span th:text="${t.first_name} + ' ' + ${t.last_name}"></span>
+                    <!--<span th:text="${t.first_name}"></span> <form:checkbox path="approved_students_teachers" th:value="${t.id}"/>-->
                 </div>
             </td>
         </tr>
