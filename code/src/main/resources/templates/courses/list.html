@@ -59,7 +59,7 @@
                     </span>
                     <!-- Enrolled knap hvis brugeren fremtræder i usersFollowing -->
                     <span th:unless="${!c.usersFollowing.contains(#authentication.getPrincipal().getUser()) }">
-                         <input type="submit" value="Enrolled" class='btn btn-success btn-sm' disabled="disabled"/>
+                         <input type="submit" value="Enrolled" class='btn btn-success btn-sm' disabled="disabled" title="Already enrolled, contact study administration"/>
                     </span>
 
                 </form>
