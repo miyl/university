@@ -50,7 +50,7 @@ public class UserController {
     Course course = seCourse.find(course_id);
     course.addPendingStudent(user);
     seCourse.save(course);
-    return prefixPath + "signupOk";
+    return "redirect:/courses/list";
   }
 
   //TODO: evt. vis hvor mange der currently er signed up til et kursus for bedre overblik.
