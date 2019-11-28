@@ -42,7 +42,7 @@
             <td th:text="${c.ects}"></td>
 
             <td>
-                <a th:href="@{'/courses/info/' + ${c.id}}" class='btn btn-secondary btn-sm'>Details</a>
+                <a th:href="@{'/courses/info/' + ${c.id}}" class='btn btn-info btn-sm'>Details</a>
                 <a th:href="@{'/courses/update/' + ${c.id}}" sec:authorize="hasRole('ROLE_TEACHER')" class="btn btn-secondary btn-sm">Update</a>
 
                 <form th:action="@{/users/student-signup}" method='POST' sec:authorize="hasRole('ROLE_STUDENT')" class="forms">
@@ -54,11 +54,11 @@
                     </span>
                     <!-- Pending knap hvis brugeren fremtræder i pendingStudents -->
                     <span th:unless="${!c.pendingStudents.contains(#authentication.getPrincipal().getUser()) }">
-                         <input type="submit" value="Pending" class='btn btn-secondary btn-sm'/>
+                         <input type="submit" value="Pending" class='btn btn-warning btn-sm'/>
                     </span>
                     <!-- Enrolled knap hvis brugeren fremtræder i usersFollowing -->
                     <span th:unless="${!c.usersFollowing.contains(#authentication.getPrincipal().getUser()) }">
-                         <input type="submit" value="Enrolled" class='btn btn-secondary btn-sm'/>
+                         <input type="submit" value="Enrolled" class='btn btn-success btn-sm'/>
                     </span>
 
                 </form>
