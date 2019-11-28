@@ -35,7 +35,7 @@ public class CourseController {
     // One can get a Principal directly from Spring automatically, but it seems to not be our home grown CustomUserPrincipal and thus it doesn't contain all the data we need.
     @GetMapping("/list")
     public String list(Model m) {
-        
+
         m.addAttribute("courses", seCourse.list());
         return pathPrefix + "list";
     }
@@ -89,7 +89,7 @@ public class CourseController {
 
     @GetMapping("/swagger-test")
     public String swaggerTest() {
-        //seSwagger.list();
+        seSwagger.list();
         // Returning some random template for now. Just run for its console output
         return pathPrefix + "add";
     }

@@ -42,7 +42,9 @@ public class SeSwagger {
   }
 
   public void add(Course c) {
-    restTemplate.postForEntity(swaggerBaseUrl + "/course", new SwaggerCourse(c), SwaggerCourse.class);
+    // System.out.println(new SwaggerCourse(c));
+    ResponseEntity<SwaggerCourse> response = restTemplate.postForEntity(swaggerBaseUrl + "/course", new SwaggerCourse(c), SwaggerCourse.class);
+    // System.out.println(response.getStatusCode());
   }
 
   // Send DELETE
