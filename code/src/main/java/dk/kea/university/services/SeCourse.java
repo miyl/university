@@ -17,8 +17,7 @@ public class SeCourse {
     }
 
     public int add(Course c) {
-        Course saved = reCourse.save(c);
-        return saved.getId();
+        return reCourse.save(c).getId();
     }
 
     // CrudRepository findAll returns an Iterable rather than a List, unlike JpaRepository findAll which returns a List
