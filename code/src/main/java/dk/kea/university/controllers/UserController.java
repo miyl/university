@@ -47,7 +47,7 @@ public class UserController {
   public String signup(Principal p, @RequestParam("id") int course_id){
 
     User user = seUser.findUserByName(p.getName());
-    Course course = seCourse.findCourse(course_id);
+    Course course = seCourse.find(course_id);
     course.addPendingStudent(user);
     seCourse.save(course);
     return prefixPath + "signupOk";
@@ -74,7 +74,7 @@ public class UserController {
   @Secured({"ROLE_ADMIN"})
   @PostMapping("/student-signup-requests")
   public String pstudentSignupRequests(@RequestParam("user_id") int user_id, @RequestParam("course_id") int course_id, @RequestParam("approvedeny") String approveOrdeny) {
-    Course course = seCourse.findCourse(course_id);
+    Course course = seCourse.find(course_id);
     User user = seUser.findUser(user_id);
     //remove from pendinglist
     course.removePendingStudent(user);

@@ -51,9 +51,8 @@ public class SeSwagger {
   }
 
   // Really we need to distinguish between replacing an object (HTTP UPDATE) and changing parts of it (HTTP PATCH).
-  public void update(Course c) {
+  public void update(int id, Course c) {
     SwaggerCourse s = new SwaggerCourse(c);
-    int id = c.getId();
     restTemplate.patchForObject(swaggerBaseUrl + "/course/" + id + "/patch", s, SwaggerCourse.class);
   }
 }

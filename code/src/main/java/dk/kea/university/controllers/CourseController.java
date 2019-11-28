@@ -42,7 +42,7 @@ public class CourseController {
 
     @GetMapping("/info/{idc}")
     public String info(Model m, @PathVariable("idc") int id) {
-        m.addAttribute("course", seCourse.findCourse(id));
+        m.addAttribute("course", seCourse.find(id));
         return pathPrefix + "info";
     }
 
@@ -58,7 +58,8 @@ public class CourseController {
     @PostMapping("/add")
     public String padd(@ModelAttribute Course course) {
         int id = seCourse.add(course);
-        seSwagger.add(course);
+        course.setId(id); // Used by Swagger
+        //seSwagger.add(course);
         return "redirect:" + pathPrefix + "info/" + id;
     }
 
@@ -66,7 +67,7 @@ public class CourseController {
     @Secured({"ROLE_TEACHER"})
     @GetMapping("/update/{idc}")
     public String update(@PathVariable("idc") int id, Model m) {
-        m.addAttribute("course", seCourse.findCourse(id));
+        m.addAttribute("course", seCourse.find(id));
         return pathPrefix + "update";
     }
 
@@ -74,7 +75,7 @@ public class CourseController {
     @PostMapping("/update")
     public String pupdate(@RequestParam("id") int id, @ModelAttribute Course course) {
         seCourse.update(id, course);
-        seSwagger.update(course);
+        //seSwagger.update(id, course);
         return "redirect:/courses/info/" + id;
     }
 
@@ -82,13 +83,13 @@ public class CourseController {
     @PostMapping("/delete")
     public String delete(@RequestParam("id") int id) {
         seCourse.delete(id);
-        seSwagger.delete(id);
+        //seSwagger.delete(id);
         return "redirect:/";
     }
 
     @GetMapping("/swagger-test")
     public String swaggerTest() {
-        seSwagger.list();
+        //seSwagger.list();
         // Returning some random template for now. Just run for its console output
         return pathPrefix + "add";
     }
