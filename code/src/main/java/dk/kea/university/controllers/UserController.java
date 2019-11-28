@@ -45,10 +45,14 @@ public class UserController {
   @Secured({"ROLE_STUDENT"})
   @PostMapping("/student-signup")
   public String signup(Principal p, @RequestParam("id") int course_id){
-
     User user = seUser.findUserByName(p.getName());
     Course course = seCourse.find(course_id);
-    course.addPendingStudent(user);
+    if(course.getPendingStudents().contains(user)){
+      course.removePendingStudent(user);
+    }
+    else {
+      course.addPendingStudent(user);
+    }
     seCourse.save(course);
     return "redirect:/courses/list";
   }
