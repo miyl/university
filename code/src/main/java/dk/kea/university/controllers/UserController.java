@@ -15,10 +15,7 @@ import org.springframework.ui.Model;
 import java.security.Principal;
 import org.springframework.security.core.Authentication;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
+import java.util.*;
 
 // Security
 
@@ -56,11 +53,13 @@ public class UserController {
     return prefixPath + "signupOk";
   }
 
+  //TODO: evt. vis hvor mange der currently er signed up til et kursus for bedre overblik.
   @Secured({"ROLE_ADMIN"})
   @GetMapping("/student-signup-requests")
   public String studentSignupRequests(Model m) {
-    Set<UserCourse> userCourseList = new HashSet<>();
     Iterable<Course> allCourses = seCourse.list();
+    Set<UserCourse> userCourseList = new HashSet<>();
+
     for(Course c : allCourses){
       Set<User> userPendingList = c.getPendingStudents();
       for(User u : userPendingList){
@@ -68,6 +67,7 @@ public class UserController {
       }
     }
     m.addAttribute("userCourseList", userCourseList);
+
     return prefixPath + "student-signup-requests";
   }
 

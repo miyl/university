@@ -34,6 +34,8 @@
           <th class="text-white">Username</th>
           <th class="text-white">Course ID</th>
           <th class="text-white">Name (English)</th>
+          <th class="text-white">Assigned Students</th>
+          <th class="text-white">Max Students</th>
           <th class="text-white">Actions</th>
       </tr>
       </thead>
@@ -46,6 +48,8 @@
             <td th:text="${userCourse.user.username}"> </td>
             <td th:text="${userCourse.course.id}"> </td>
             <td th:text="${userCourse.course.name_en}"> </td>
+            <td th:text="${userCourse.course.getUsersFollowing().size()}"></td>
+            <td th:text="${userCourse.course.max_students}"></td>
             <td>
                 <form th:action="@{'/users/student-signup-requests'}" method="POST" class="forms">
                     <input type="hidden" name="user_id" th:value="${userCourse.user.id}">
