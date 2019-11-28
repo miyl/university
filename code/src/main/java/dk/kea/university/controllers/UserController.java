@@ -86,7 +86,7 @@ public class UserController {
     }
     //else
     else {
-      //do something
+      seCourse.save(course);
     }
     return "redirect:/" + prefixPath + "student-signup-requests";
   }
