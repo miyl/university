@@ -23,7 +23,7 @@ public class SeSwagger {
   }
 
   // Look into: ResponseEntity vs. getForObject?
-  public List<Course> listAll() {
+  public List<Course> list() {
     ResponseEntity<SwaggerCourse[]> response = restTemplate.getForEntity(swaggerBaseUrl + "/course", SwaggerCourse[].class);
     List<Course> cs = new ArrayList<Course>();
 
@@ -36,22 +36,22 @@ public class SeSwagger {
   }
 
   // Will return a Course object with only some fields set, ie. those found on Swagger. Should we use a custom model for this?
-  public Course findCourseById(int id) {
+  public Course findById(int id) {
     SwaggerCourse s = restTemplate.getForObject(swaggerBaseUrl + "/course/" + id, SwaggerCourse.class);
     return new Course(s);
   }
 
-  public void addCourse(Course c) {
+  public void add(Course c) {
     restTemplate.postForEntity(swaggerBaseUrl + "/course", new SwaggerCourse(c), SwaggerCourse.class);
   }
 
   // Send DELETE
-  public void deleteCourse(int id) {
+  public void delete(int id) {
     restTemplate.delete(swaggerBaseUrl + "/course/" + id);
   }
 
   // Really we need to distinguish between replacing an object (HTTP UPDATE) and changing parts of it (HTTP PATCH).
-  public void updateCourse(Course c) {
+  public void update(Course c) {
     SwaggerCourse s = new SwaggerCourse(c);
     int id = c.getId();
     restTemplate.patchForObject(swaggerBaseUrl + "/course/" + id + "/patch", s, SwaggerCourse.class);

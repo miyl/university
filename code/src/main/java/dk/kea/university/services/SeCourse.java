@@ -26,6 +26,7 @@ public class SeCourse {
         return reCourse.findAll();
     }
 
+    //TODO: Rename to find
     public Course findCourse(int id) {
         Optional<Course> optional = reCourse.findById(id);
         if (optional.isPresent()) {
@@ -36,7 +37,7 @@ public class SeCourse {
     }
 
     //update method
-    public void updateCourse(int id, Course course) {
+    public void update(int id, Course course) {
         Optional<Course> optional = reCourse.findById(id);
         if (optional.isPresent()) {
             Course existing = optional.get();

@@ -58,6 +58,7 @@ public class CourseController {
     @PostMapping("/add")
     public String padd(@ModelAttribute Course course) {
         int id = seCourse.add(course);
+        seSwagger.add(course);
         return "redirect:" + pathPrefix + "info/" + id;
     }
 
@@ -72,7 +73,8 @@ public class CourseController {
     @Secured({"ROLE_TEACHER"})
     @PostMapping("/update")
     public String pupdate(@RequestParam("id") int id, @ModelAttribute Course course) {
-        seCourse.updateCourse(id, course);
+        seCourse.update(id, course);
+        seSwagger.update(course);
         return "redirect:/courses/info/" + id;
     }
 
@@ -80,12 +82,13 @@ public class CourseController {
     @PostMapping("/delete")
     public String delete(@RequestParam("id") int id) {
         seCourse.delete(id);
+        seSwagger.delete(id);
         return "redirect:/";
     }
 
     @GetMapping("/swagger-test")
     public String swaggerTest() {
-        seSwagger.listAll();
+        seSwagger.list();
         // Returning some random template for now. Just run for its console output
         return pathPrefix + "add";
     }

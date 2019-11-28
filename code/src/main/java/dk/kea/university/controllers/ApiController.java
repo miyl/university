@@ -43,6 +43,6 @@ public class ApiController {
 
   @GetMapping("/swagger/list-courses")
   public Iterable<Course> listSwagger() {
-    return seSwagger.listAll();
+    return seSwagger.list();
   }
 }
