@@ -48,16 +48,17 @@
                 <form th:action="@{/users/student-signup}" method='POST' sec:authorize="hasRole('ROLE_STUDENT')" class="forms">
                     <input type="hidden" th:value="${c.id}" name="id"/>
 
-
-                    <span th:if="${c.pendingStudents.contains(#authentication.getPrincipal().getUser()) }">
-                         <input type="submit" value="Pending" class='btn btn-secondary btn-sm'/>
-                    </span>
-                    <span th:if="${c.usersFollowing.contains(#authentication.getPrincipal().getUser()) }">
-                         <input type="submit" value="Enrolled" class='btn btn-secondary btn-sm'/>
-                    </span>
                     <span th:if="${(!(c.usersFollowing.contains(#authentication.getPrincipal().getUser()) || c.pendingStudents.contains(#authentication.getPrincipal().getUser()))) }">
                          <input type="submit" value="Sign Up" class='btn btn-secondary btn-sm'/>
                     </span>
+
+                    <span th:unless="${!c.pendingStudents.contains(#authentication.getPrincipal().getUser()) }">
+                         <input type="submit" value="Pending" class='btn btn-secondary btn-sm'/>
+                    </span>
+                    <span th:unless="${!c.usersFollowing.contains(#authentication.getPrincipal().getUser()) }">
+                         <input type="submit" value="Enrolled" class='btn btn-secondary btn-sm'/>
+                    </span>
+
                 </form>
                 <form th:action="@{/courses/delete}" method='POST' sec:authorize="hasRole('ROLE_ADMIN')" class="forms">
                     <input type="hidden" th:value="${c.id}" name="id"/>
