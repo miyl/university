@@ -55,7 +55,7 @@
                     <span th:if="${c.usersFollowing.contains(#authentication.getPrincipal().getUser()) }">
                          <input type="submit" value="Enrolled" class='btn btn-secondary btn-sm'/>
                     </span>
-                    <span th:if="${true}">
+                    <span th:if="${(!(c.usersFollowing.contains(#authentication.getPrincipal().getUser()) || c.pendingStudents.contains(#authentication.getPrincipal().getUser()))) }">
                          <input type="submit" value="Sign Up" class='btn btn-secondary btn-sm'/>
                     </span>
                 </form>
