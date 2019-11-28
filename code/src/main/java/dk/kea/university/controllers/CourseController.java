@@ -68,6 +68,7 @@ public class CourseController {
     @GetMapping("/update/{idc}")
     public String update(@PathVariable("idc") int id, Model m) {
         m.addAttribute("course", seCourse.find(id));
+        m.addAttribute("teachers", seUser.teachers());
         return pathPrefix + "update";
     }
 
