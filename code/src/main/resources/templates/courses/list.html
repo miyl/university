@@ -48,13 +48,15 @@
                 <form th:action="@{/users/student-signup}" method='POST' sec:authorize="hasRole('ROLE_STUDENT')" class="forms">
                     <input type="hidden" th:value="${c.id}" name="id"/>
 
+                    <!-- Sign up knap hvis brugeren ikke er i usersFollowing eller pendingStudents -->
                     <span th:if="${(!(c.usersFollowing.contains(#authentication.getPrincipal().getUser()) || c.pendingStudents.contains(#authentication.getPrincipal().getUser()))) }">
                          <input type="submit" value="Sign Up" class='btn btn-secondary btn-sm'/>
                     </span>
-
+                    <!-- Pending knap hvis brugeren fremtræder i pendingStudents -->
                     <span th:unless="${!c.pendingStudents.contains(#authentication.getPrincipal().getUser()) }">
                          <input type="submit" value="Pending" class='btn btn-secondary btn-sm'/>
                     </span>
+                    <!-- Enrolled knap hvis brugeren fremtræder i usersFollowing -->
                     <span th:unless="${!c.usersFollowing.contains(#authentication.getPrincipal().getUser()) }">
                          <input type="submit" value="Enrolled" class='btn btn-secondary btn-sm'/>
                     </span>
