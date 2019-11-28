@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:title="http://www.w3.org/1999/xhtml">
 
 <head>
     <!-- Purpose of this list is to display quick-info about the course. A fully list can be seen when "show more" is selected-->
@@ -54,11 +55,11 @@
                     </span>
                     <!-- Pending knap hvis brugeren fremtræder i pendingStudents -->
                     <span th:unless="${!c.pendingStudents.contains(#authentication.getPrincipal().getUser()) }">
-                         <input type="submit" value="Pending" class='btn btn-warning btn-sm'/>
+                         <input type="submit" value="Pending" class='btn btn-warning btn-sm' title="Click to Reverse">
                     </span>
                     <!-- Enrolled knap hvis brugeren fremtræder i usersFollowing -->
                     <span th:unless="${!c.usersFollowing.contains(#authentication.getPrincipal().getUser()) }">
-                         <input type="submit" value="Enrolled" class='btn btn-success btn-sm'/>
+                         <input type="submit" value="Enrolled" class='btn btn-success btn-sm' disabled="disabled"/>
                     </span>
 
                 </form>
