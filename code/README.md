@@ -2,12 +2,12 @@
 
 ## TODO
 
-- Own API for JQuery/JS
+- Own API for JQuery/JS: In progress
 - JQuery dynamic updates
 - Third party API integration: In progress
-- Ingegrate adding teachers to Course in add/update
-- My courses:
-- Student signup: make request via ajax and report back that status is pending
+- Ingegrate adding teachers to Course in add/update: Add finished, update almost.
+- My courses: Done.
+- Student signup: make request via ajax instead and report back that status is pending
 
 ## Database
 
@@ -39,10 +39,10 @@ user_courses (many to many between student users, courses)
 
 -  teachers (FK?)
 
-* could be boolean
+* could be boolean but isn't in the report
 
 
-### Swagger
+### API (documented via Swagger)
 
 API + documentation:  
 http://35.159.46.191/swagger-ui.html

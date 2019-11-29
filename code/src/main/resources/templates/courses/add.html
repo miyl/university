@@ -120,15 +120,8 @@
                   <li th:each="t : ${teachers}">
                     <span th:text="${t.first_name} + ' ' + ${t.last_name}"></span>
                     <input type="checkbox" th:name="usersFollowing" th:value="${t.id}" />
-                    <!-- <label th:for="${#ids.prev('features')}" --> 
-                    <!--        th:text="#{${t.name}}">Temp</label> -->
                   </li>
                 </ul>
-                <!-- <div th:each="t : ${teachers}"> -->
-                    <!-- <input type="checkbox" th:name="approved_students_teachers" th:value="${t.id}"/> -->
-                    <!-- <span th:text="${t.first_name} + ' ' + ${t.last_name}"></span> -->
-                    <!--<span th:text="${t.first_name}"></span> <form:checkbox path="approved_students_teachers" th:value="${t.id}"/>-->
-                <!-- </div> -->
             </td>
         </tr>
     </table>
